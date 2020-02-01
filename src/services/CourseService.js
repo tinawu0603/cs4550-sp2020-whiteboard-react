@@ -1,42 +1,39 @@
-function CourseServiceClient() {
-    this.createCourse = createCourse;
-    this.findAllCourses = findAllCourses;
-    this.findCourseById = findCourseById;
-    this.deleteCourse = deleteCourse;
-    this.updateCourse = updateCourse;
-    this.url = 'https://wbdv-generic-server.herokuapp.com/api/001280266/courses';
-    var self = this;
-    function createCourse(course) {
-        return fetch(self.url, {
-            method: 'POST',
-            body: JSON.stringify(user),
-            headers: {
-                'content-type': 'application/json'
-            }
-        })
-            .then(response => response.json())
-    }
-    function findAllCourses() {
-        return fetch(self.url)
-            .then(response => response.json())
-    }
-    function findCourseById(id) {
-        return fetch(`${self.url}/${id}`)
-            .then(response => response.json())
-    }
-    function updateCourse(id, course) {
-        return fetch(`${self.url}/${id}`, {
-            method: 'PUT',
-            body: JSON.stringify(course),
-            headers: {
-                'content-type': 'application/json'
-            }
-        })
-            .then(response => response.json())
-    }
-    function deleteCourse(id) {
-        return fetch(`${self.url}/${id}`, {
-            method: 'DELETE'
-        })
-    }
+import { API_URL } from "../constants";
+
+
+export const createCourse = (course) =>
+    fetch(API_URL, {
+        method: 'POST',
+        body: JSON.stringify(user),
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+
+export const findAllCourses = async () => {
+    const response = await fetch(API_URL)
+    return await response.json()
+}
+
+export const findCourseById = (id) => {
+    const response = await fetch(`${API_URL}/${id}`)
+    return await response.json()
+}
+
+export const updateCourse = (id, course) =>
+    fetch(`${API_URL}/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify(course),
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+
+export const deleteCourse = async (id) => {
+    const response = await fetch(`${API_URL}/${id}`, {
+        method: 'DELETE'
+    })
+    return await response.json()
 }
