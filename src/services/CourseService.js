@@ -4,7 +4,7 @@ import { API_URL } from "../constants";
 export const createCourse = (course) =>
     fetch(API_URL, {
         method: 'POST',
-        body: JSON.stringify(user),
+        body: JSON.stringify(course),
         headers: {
             'content-type': 'application/json'
         }
@@ -16,7 +16,7 @@ export const findAllCourses = async () => {
     return await response.json()
 }
 
-export const findCourseById = (id) => {
+export const findCourseById = async (id) => {
     const response = await fetch(`${API_URL}/${id}`)
     return await response.json()
 }
