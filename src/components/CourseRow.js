@@ -1,6 +1,5 @@
 import React from "react";
 import "../css/course-row.style.client.css"
-import { findAllCourses } from "../services/CourseService";
 
 class CourseRow extends React.Component {
     state = {
