@@ -2,7 +2,9 @@ import React from "react";
 import CourseTableComponent from "../components/CourseTableComponent";
 import CourseGridComponent from "../components/CourseGridComponent";
 import CourseEditorComponent from "../components/CourseEditor/CourseEditorComponent";
-import { findAllCourses, deleteCourse, createCourse } from "../services/CourseService";
+import { findAllCourses, deleteCourse, createCourse, updateCourse } from "../services/CourseService";
+import "../css/styles.css"
+import "../css/course-manager-container.style.client.css"
 
 class CourseManagerContainer extends React.Component {
     state = {
@@ -46,6 +48,14 @@ class CourseManagerContainer extends React.Component {
                 })
             })
 
+    updateCourse = (course) =>
+        updateCourse(course._id, course).then(async () => {
+            const courses = await findAllCourses();
+            this.setState({
+                courses: courses
+            });
+        })
+
     addCourse = () =>
         createCourse({
             title: this.state.newCourseTitle
@@ -76,7 +86,6 @@ class CourseManagerContainer extends React.Component {
     render() {
         return (
             <div className="container-fluid">
-                <h1>Course Manager</h1>
 
                 {
                     this.state.showEditor &&
@@ -87,25 +96,66 @@ class CourseManagerContainer extends React.Component {
                 {
                     !this.state.showEditor &&
                     <div>
-                        <button onClick={this.toggle}>Toggle</button>
-                        <input
-                            onChange={(e) => this.updateForm({
-                                newCourseTitle: e.target.value
-                            })}
-                            value={this.state.newCourseTitle} />
-                        <button onClick={this.addCourse}>Add Course</button>
-                        {
-                            this.state.layout === 'table' &&
-                            <CourseTableComponent
-                                showEditor={this.showEditor}
-                                deleteCourse={this.deleteCourse}
-                                courses={this.state.courses} />
-                        }
-                        {
-                            this.state.layout === 'grid'
-                            && <CourseGridComponent
-                                courses={this.state.courses} />
-                        }
+                        <nav className="navbar navbar-expand-lg nav-fill">
+                            <div className="navbar-brand mr-auto">
+                                <img src="icon.png" alt=""></img>
+                                Whiteboard
+                            </div>
+                            <button type="button" className="navbar-toggler btn-hamburger wbdv-field wbdv-hamburger btn" data-toggle="collapse"
+                                data-target="#collapsingNavbarSm">
+                                <img src="img/hamburger.svg" className="navbar-toggler-icon" alt=""></img>
+                            </button>
+                            <div className="navbar-collapse collapse" id="collapsingNavbarSm">
+                                <ul className="navbar-nav d-none d-lg-flex mr-auto">
+                                    <li className="nav-item">
+                                        <a className="nav-link course-manager-title wbdv-label wbdv-course-manager" href="#">
+                                            Course Manager
+                                    </a>
+                                    </li>
+                                </ul>
+                                <ul className="navbar-nav ml-auto">
+                                    <li className="nav-item">
+                                        <form className="form-inline">
+                                            <input type="text" id="new-course-input" className="input-lg wbdv-field wbdv-new-course"
+                                                aria-describedby="widget-input" placeholder="New Course Title" onChange={(e) => this.updateForm({
+                                                    newCourseTitle: e.target.value
+                                                })}></input>
+                                            <button type="button" className="btn-plus btn wbdv-button wbdv-add-course" onClick={this.addCourse}>
+                                                <img src="img/plus.svg" alt=""></img>
+                                            </button>
+                                        </form>
+                                    </li>
+                                    <li className="nav-item">
+                                        <button className="btn" type="button" onClick={this.toggle}>
+                                            {
+                                                this.state.layout === 'table' &&
+                                                <img src="img/grid.svg" alt="" className="wbdv-icon"></img>
+                                            }
+                                            {
+                                                this.state.layout === 'grid' &&
+                                                <img src="img/list.svg" alt="" className="wbdv-icon"></img>
+                                            }
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+
+                        <div>
+                            {
+                                this.state.layout === 'table' &&
+                                <CourseTableComponent
+                                    showEditor={this.showEditor}
+                                    deleteCourse={this.deleteCourse}
+                                    updateCourse={this.updateCourse}
+                                    courses={this.state.courses} />
+                            }
+                            {
+                                this.state.layout === 'grid'
+                                && <CourseGridComponent
+                                    courses={this.state.courses} />
+                            }
+                        </div>
                     </div>
                 }
 

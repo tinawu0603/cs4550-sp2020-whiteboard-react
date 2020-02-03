@@ -21,7 +21,6 @@ a:hover, a:focus, a:active {
     border-radius: 10px;
     border-color: rgba(3, 12, 84, 0.8);
     width: 100%;
-    padding: 3px;
 }
 
 .btn-save-course:hover, .btn-save-course:focus, .btn-save-course:active,
