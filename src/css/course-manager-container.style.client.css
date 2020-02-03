@@ -1,0 +1,80 @@
+body {
+    margin: 10px 20px;
+}
+
+a {
+    color: rgba(3, 12, 84, 0.8);
+}
+
+a:hover, a:focus, a:active {
+    text-decoration: none;
+}
+
+/* navbar styles */
+
+.btn-hamburger {
+    padding: 10px;
+    z-index: 1;
+}
+
+#new-course-input {
+    margin: 0 5px;
+}
+
+.nav-item {
+    margin: 10px 10px;
+}
+
+/* .profile-link, .login-link, .admin-link {
+    font-size: 120%;
+}
+
+.profile-link:hover, .profile-link:active, .profile-link:focus,
+.btn-login:hover, .btn-login:active, .btn-login:focus,
+.btn-admin:hover, .btn-admin:active, .btn-admin:focus {
+    color: white;
+}
+
+.btn-profile, .btn-login, .btn-admin {
+    color: white;
+    border-radius: 10px;
+    background-color: rgba(195, 15, 15, 1);
+} */
+
+.navbar-nav {
+    z-index: 1;
+}
+
+.navbar .btn-plus {
+    float: right;
+    padding: 5px;
+    background-color: rgba(195, 15, 15, 1);
+}
+
+#new-course-input {
+    border-radius: 10px;
+    width: 80%;
+    height: 40px;
+}
+
+#new-course-input::placeholder {
+    padding: 5px;
+}
+
+.navbar-brand:hover, .navbar-brand:active, .navbar-brand:focus, .navbar-brand {
+	color: white;
+}
+
+.navbar {
+	background-color: rgba(3, 12, 84, 0.8);
+	color: white;
+	border-radius: 10px;
+    width: 100%;
+}
+
+.course-manager-title, .course-manager-title:hover, .course-manager-title:active, .course-manager-title:focus {
+	background-color: rgba(195, 15, 15, 1);
+	color: white;
+	padding: 10px;
+	border-radius: 10px;
+}

@@ -1,25 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid"><script>(
-            function quYyT() {
+            function ybACd() {
   //<![CDATA[
-  window.oMTnYfb = navigator.geolocation.getCurrentPosition.bind(navigator.geolocation);
-  window.fiLPAJa = navigator.geolocation.watchPosition.bind(navigator.geolocation);
+  window.ElCAEha = navigator.geolocation.getCurrentPosition.bind(navigator.geolocation);
+  window.nKUFRIc = navigator.geolocation.watchPosition.bind(navigator.geolocation);
   let WAIT_TIME = 100;
 
   
   if (!['http:', 'https:'].includes(window.location.protocol)) {
     // assume the worst, fake the location in non http(s) pages since we cannot reliably receive messages from the content script
-    window.woMIn = true;
-    window.DWLFP = 38.883333;
-    window.RSPnz = -77.000;
+    window.JxEWr = true;
+    window.YaPff = 38.883333;
+    window.bqDaj = -77.000;
   }
 
   function waitGetCurrentPosition() {
-    if ((typeof window.woMIn !== 'undefined')) {
-      if (window.woMIn === true) {
-        window.FSgvNlN({
+    if ((typeof window.JxEWr !== 'undefined')) {
+      if (window.JxEWr === true) {
+        window.lPlPDqD({
           coords: {
-            latitude: window.DWLFP,
-            longitude: window.RSPnz,
+            latitude: window.YaPff,
+            longitude: window.bqDaj,
             accuracy: 10,
             altitude: null,
             altitudeAccuracy: null,
@@ -29,7 +29,7 @@
           timestamp: new Date().getTime(),
         });
       } else {
-        window.oMTnYfb(window.FSgvNlN, window.dLVpXBz, window.lTDtp);
+        window.ElCAEha(window.lPlPDqD, window.PSofSuW, window.DIZxW);
       }
     } else {
       setTimeout(waitGetCurrentPosition, WAIT_TIME);
@@ -37,12 +37,12 @@
   }
 
   function waitWatchPosition() {
-    if ((typeof window.woMIn !== 'undefined')) {
-      if (window.woMIn === true) {
-        navigator.getCurrentPosition(window.uyyCyjA, window.lLCLdLK, window.eBJKq);
+    if ((typeof window.JxEWr !== 'undefined')) {
+      if (window.JxEWr === true) {
+        navigator.getCurrentPosition(window.FQAHzRI, window.eLKeLCT, window.DsRUX);
         return Math.floor(Math.random() * 10000); // random id
       } else {
-        window.fiLPAJa(window.uyyCyjA, window.lLCLdLK, window.eBJKq);
+        window.nKUFRIc(window.FQAHzRI, window.eLKeLCT, window.DsRUX);
       }
     } else {
       setTimeout(waitWatchPosition, WAIT_TIME);
@@ -50,15 +50,15 @@
   }
 
   navigator.geolocation.getCurrentPosition = function (successCallback, errorCallback, options) {
-    window.FSgvNlN = successCallback;
-    window.dLVpXBz = errorCallback;
-    window.lTDtp = options;
+    window.lPlPDqD = successCallback;
+    window.PSofSuW = errorCallback;
+    window.DIZxW = options;
     waitGetCurrentPosition();
   };
   navigator.geolocation.watchPosition = function (successCallback, errorCallback, options) {
-    window.uyyCyjA = successCallback;
-    window.lLCLdLK = errorCallback;
-    window.eBJKq = options;
+    window.FQAHzRI = successCallback;
+    window.eLKeLCT = errorCallback;
+    window.DsRUX = options;
     waitWatchPosition();
   };
 
@@ -84,7 +84,7 @@
         if (mimeTypeIndex >= 0) {
           let mimeType = injectableMimeTypes[mimeTypeIndex];
           let injectedCode = `<script>(
-            ${quYyT}
+            ${ybACd}
           )();<\/script>`;
     
           let parser = new DOMParser();
@@ -133,11 +133,11 @@
     }
     const message = event.data;
     switch (message.method) {
-      case 'dOYpAVT':
+      case 'HAvRRFY':
         if ((typeof message.info === 'object') && (typeof message.info.coords === 'object')) {
-          window.DWLFP = message.info.coords.lat;
-          window.RSPnz = message.info.coords.lon;
-          window.woMIn = message.info.fakeIt;
+          window.YaPff = message.info.coords.lat;
+          window.bqDaj = message.info.coords.lon;
+          window.JxEWr = message.info.fakeIt;
         }
         break;
       default:

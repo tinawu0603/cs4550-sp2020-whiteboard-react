@@ -1,0 +1,79 @@
+a {
+    color: rgba(3, 12, 84, 0.8);
+}
+
+a:hover, a:focus, a:active {
+    text-decoration: none;
+}
+
+/* editing styles */
+#edit-course-name {
+    margin: 0 5px;
+    border-radius: 10px;
+    width: 80%;
+    height: 40px;
+    color: rgba(3, 12, 84, 0.8);
+    padding: 5px;
+}
+
+.btn-save-course, .btn-cancel-course {
+    color: rgba(3, 12, 84, 0.8);
+    border-radius: 10px;
+    border-color: rgba(3, 12, 84, 0.8);
+    width: 100%;
+    padding: 3px;
+}
+
+.btn-save-course:hover, .btn-save-course:focus, .btn-save-course:active,
+.btn-cancel-course:hover, .btn-cancel-course:focus, .btn-cancel-course:active
+ {
+    background: transparent;
+    color: rgba(3, 12, 84, 0.8);
+}
+
+/* course row styles */
+.wbdv-title {
+    margin: 0
+}
+
+.course-row {
+    margin: 10px 20px;
+    padding: 10px;
+    background: white;
+    color: rgba(3, 12, 84, 0.8);
+    border-radius: 10px;
+    font-size: 130%;
+}
+
+.doc-icon {
+    margin: 0 10px;
+}
+
+.btn-edit-course {
+    color: rgba(3, 12, 84, 0.8);
+    border-radius: 10px;
+    border-color: rgba(3, 12, 84, 0.8);
+    width: 100%;
+    padding: 3px;
+}
+
+.btn-edit-course:hover, .btn-edit-course:focus, .btn-edit-course:active
+ {
+    background: transparent;
+    color: rgba(3, 12, 84, 0.8);
+}
+
+.course-info {
+    color: rgba(3, 12, 84, 0.6);
+}
+
+.btn-delete-course {
+    background: rgba(195, 15, 15, 1);
+    border-radius: 10px;
+    float: right;
+}
+
+.btn-delete-course:hover, .btn-delete-course:focus, .btn-delete-course:active
+ {
+    background: rgba(195, 15, 15, 1);
+}
