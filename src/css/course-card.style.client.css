@@ -8,13 +8,10 @@ a:hover, a:focus, a:active {
 
 /* course card styles */
 .card {
-    margin: 10px 20px;
-    padding: 10px;
     background: white;
     color: rgba(3, 12, 84, 0.8);
     border-color: rgba(3, 12, 84, 0.8);
     border-radius: 10px;
-    font-size: 130%;
     border-width: thick;
 }
 
@@ -56,6 +53,13 @@ a:hover, a:focus, a:active {
 .card .course-info {
     font-size: small;
     padding: 0 0 5px 0;
+}
+
+.card .course-title {
+    font-size: medium;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .card .row {

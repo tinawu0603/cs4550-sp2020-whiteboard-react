@@ -144,7 +144,7 @@ class CourseManagerContainer extends React.Component {
                             </div>
                         </nav>
 
-                        <div>
+                        <div className="container-fluid">
                             {
                                 this.state.layout === 'table' &&
                                 <CourseTableComponent

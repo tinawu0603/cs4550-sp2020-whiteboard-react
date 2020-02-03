@@ -13,13 +13,13 @@ class CourseCard extends React.Component {
 
     render() {
         return (
-            <div className="card">
+            <div className="card col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
                 <img className="card-img-top" src="img/card-img.png" />
                 {
                     !this.state.editing &&
                     <div className="card-body">
                         <div className="row">
-                            <a onClick={this.props.showEditor} href="#">
+                            <a onClick={this.props.showEditor} className="course-title" href="#">
                                 {this.props.course.title}
                             </a>
                         </div>
@@ -27,23 +27,21 @@ class CourseCard extends React.Component {
                             <i className="course-info">Modified Just now</i>
                         </div>
                         <div className="row">
-                            <div className="col-sm-6">
-                                <button className="btn btn-block btn-edit-course" type="button" onClick={() => {
-                                    this.setState({
-                                        editing: true,
-                                        updatedCourseTitle: this.props.course.title
-                                    })
-                                }}>
-                                    <img src="img/edit.svg" className="edit-icon"></img>
-                                    Rename
+                            <button className="btn btn-block btn-edit-course" type="button" onClick={() => {
+                                this.setState({
+                                    editing: true,
+                                    updatedCourseTitle: this.props.course.title
+                                })
+                            }}>
+                                <img src="img/edit.svg" className="edit-icon"></img>
+                                Rename
                                 </button>
-                            </div>
-                            <div className="col-sm-6">
-                                <button className="btn btn-block btn-delete-course" type="button" onClick={() => this.props.deleteCourse(this.props.course)}>
-                                    <img src="img/x.svg" className="delete-icon"></img>
-                                    Delete
+                        </div>
+                        <div className="row">
+                            <button className="btn btn-block btn-delete-course" type="button" onClick={() => this.props.deleteCourse(this.props.course)}>
+                                <img src="img/x.svg" className="delete-icon"></img>
+                                Delete
                                 </button>
-                            </div>
                         </div>
                     </div>
                 }
