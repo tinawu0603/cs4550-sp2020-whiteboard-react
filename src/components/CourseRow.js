@@ -4,7 +4,8 @@ import "../css/course-row.style.client.css"
 class CourseRow extends React.Component {
     state = {
         editing: false,
-        updatedCourseTitle: ""
+        updatedCourseTitle: "",
+        selected: false
     }
 
     updateForm = (newState) => {
@@ -13,7 +14,11 @@ class CourseRow extends React.Component {
 
     render() {
         return (
-            <div className="course-row row wbdv-row wbdv-course">
+            <div className="course-row row wbdv-row wbdv-course" onClick={() =>
+                this.updateForm({
+                    selected: !this.state.selected
+                })}
+                style={{ 'backgroundColor': this.state.selected ? '#8491fb' : 'white' }}>
                 {
                     !this.state.editing &&
                     <div className="col-sm-6 row wbdv-row wbdv-title">
