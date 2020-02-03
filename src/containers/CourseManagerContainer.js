@@ -120,7 +120,10 @@ class CourseManagerContainer extends React.Component {
                                                 aria-describedby="widget-input" placeholder="New Course Title" onChange={(e) => this.updateForm({
                                                     newCourseTitle: e.target.value
                                                 })}></input>
-                                            <button type="button" className="btn-plus btn wbdv-button wbdv-add-course" onClick={this.addCourse}>
+                                            <button type="button" className="btn-plus btn wbdv-button wbdv-add-course" onClick={() => {
+                                                this.addCourse();
+                                                document.getElementById("new-course-input").value = "";
+                                            }}>
                                                 <img src="img/plus.svg" alt=""></img>
                                             </button>
                                         </form>

@@ -22,11 +22,11 @@ a:hover, a:focus, a:active {
     padding: 5px;
 }
 
-.edit-icon, .delete-icon, .save-icon {
+.card .edit-icon, .card .delete-icon, .card .save-icon {
     padding: 0 2px;
 }
 
-.btn-edit-course {
+.card .btn-edit-course {
     color: rgba(3, 12, 84, 0.8);
     border-radius: 10px;
     border-color: rgba(3, 12, 84, 0.8);
@@ -53,11 +53,11 @@ a:hover, a:focus, a:active {
     background: rgba(195, 15, 15, 1);
 }
 
-.course-info {
+.card .course-info {
     font-size: small;
     padding: 0 0 5px 0;
 }
 
-.row {
+.card .row {
     padding: 5px;
 }
