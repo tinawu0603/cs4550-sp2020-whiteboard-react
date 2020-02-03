@@ -13,7 +13,7 @@ class CourseCard extends React.Component {
 
     render() {
         return (
-            <div className="card col-sm-4">
+            <div className="card">
                 <img className="card-img-top" src="img/card-img.png" />
                 {
                     !this.state.editing &&
@@ -27,7 +27,7 @@ class CourseCard extends React.Component {
                             <i className="course-info">Modified Just now</i>
                         </div>
                         <div className="row">
-                            <div class="col-sm-6">
+                            <div className="col-sm-6">
                                 <button className="btn btn-block btn-edit-course" type="button" onClick={() => {
                                     this.setState({
                                         editing: true,
@@ -38,7 +38,7 @@ class CourseCard extends React.Component {
                                     Rename
                                 </button>
                             </div>
-                            <div class="col-sm-6">
+                            <div className="col-sm-6">
                                 <button className="btn btn-block btn-delete-course" type="button" onClick={() => this.props.deleteCourse(this.props.course)}>
                                     <img src="img/x.svg" className="delete-icon"></img>
                                     Delete
@@ -51,7 +51,7 @@ class CourseCard extends React.Component {
                     this.state.editing &&
                     <div className="card-body">
                         <div className="row">
-                            <input type="text" id="edit-course-name" class="input-lg wbdv-field"
+                            <input type="text" id="edit-course-name" className="input-lg wbdv-field"
                                 aria-describedby="widget-input" onChange={(e) => {
                                     this.updateForm({
                                         updatedCourseTitle: e.target.value
@@ -62,7 +62,7 @@ class CourseCard extends React.Component {
                             <i className="course-info">Modified Just now</i>
                         </div>
                         <div className="row">
-                            <div class="col-sm-6">
+                            <div className="col-sm-6">
                                 <button className="btn btn-block btn-save-course" type="button" onClick={this.updateCourse} onClick={() => {
                                     this.props.updateCourse({
                                         title: this.state.updatedCourseTitle,
@@ -78,7 +78,7 @@ class CourseCard extends React.Component {
                                     Save
                                 </button>
                             </div>
-                            <div class="col-sm-6">
+                            <div className="col-sm-6">
                                 <button className="btn btn-block btn-cancel-course" type="button" onClick={() => {
                                     this.setState({
                                         editing: false

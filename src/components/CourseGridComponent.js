@@ -23,7 +23,7 @@ const CourseGridComponent = ({ courses, deleteCourse, showEditor, updateCourse }
             </button>
             </div>
         </div>
-        <div className="card-deck">
+        <div className="card-columns">
             {
                 courses.map(function (course, index) {
                     return (

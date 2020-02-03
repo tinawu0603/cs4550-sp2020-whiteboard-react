@@ -11,10 +11,34 @@ a:hover, a:focus, a:active {
 }
 
 /* card deck styles */
-.card-deck {
+.card-columns {
     margin: 10px 20px;
     padding: 10px;
     color: rgba(3, 12, 84, 0.8);
+}
+
+@media (min-width: 0px) {
+    .card-columns {
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-count: 1;
+    }
+}
+
+@media (min-width: 768px) {
+    .card-columns {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+}
+
+@media (min-width: 992px) {
+    .card-columns {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        column-count: 3;
+    }
 }
 
 /* header bar styles */
