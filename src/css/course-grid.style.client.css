@@ -1,0 +1,41 @@
+body {
+    margin: 10px 20px;
+}
+
+a {
+    color: white;
+}
+
+a:hover, a:focus, a:active {
+    text-decoration: none;
+}
+
+/* card deck styles */
+.card-deck {
+    margin: 10px 20px;
+    padding: 10px;
+    color: rgba(3, 12, 84, 0.8);
+}
+
+/* header bar styles */
+.header-bar {
+    margin: 10px 20px;
+    padding: 10px;
+    background: rgba(3, 12, 84, 0.8);
+    color: white;
+    border-radius: 10px;
+}
+
+.btn-ownedby, .btn-headerbar {
+    color: white;
+    border-radius: 10px;
+    border-color: white;
+    width: 100%;
+}
+
+.btn-ownedby:hover, .btn-ownedby:focus, .btn-ownedby:active,
+.btn-headerbar:hover, .btn-headerbar:focus, .btn-headerbar:active
+ {
+    background: transparent;
+    color: white;
+}

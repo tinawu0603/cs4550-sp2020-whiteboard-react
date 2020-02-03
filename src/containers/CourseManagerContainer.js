@@ -8,7 +8,7 @@ import "../css/course-manager-container.style.client.css"
 
 class CourseManagerContainer extends React.Component {
     state = {
-        layout: 'table',
+        layout: 'grid',
         showEditor: false,
         newCourseTitle: "New Course Title",
         courses: []
@@ -153,6 +153,9 @@ class CourseManagerContainer extends React.Component {
                             {
                                 this.state.layout === 'grid'
                                 && <CourseGridComponent
+                                    showEditor={this.showEditor}
+                                    deleteCourse={this.deleteCourse}
+                                    updateCourse={this.updateCourse}
                                     courses={this.state.courses} />
                             }
                         </div>
