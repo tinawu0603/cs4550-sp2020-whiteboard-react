@@ -20,7 +20,7 @@ class Module extends React.Component {
                         })
                     }
                         style={{ 'backgroundColor': '#c30f0f' }}>
-                        <a class="module-link wbdv-module-item-title" href="#">Module 4</a>
+                        <a class="module-link wbdv-module-item-title" href="#">{this.props.module.title}</a>
                     </li>
                 }
                 {
@@ -31,7 +31,7 @@ class Module extends React.Component {
                         })
                     }
                         style={{ 'backgroundColor': 'none' }}>
-                        <a class="module-link wbdv-module-item-title" href="#">Module 4</a>
+                        <a class="module-link wbdv-module-item-title" href="#">{this.props.module.title}</a>
                     </li>
                 }
             </div >
