@@ -1,0 +1,29 @@
+ 
+.lesson-tabs body {
+    margin: 10px 20px;
+}
+
+.lesson-title {
+    color: white;
+}
+
+.lesson-tabs a:hover, .lesson-tabs a:focus, .lesson-tabs a:active {
+    text-decoration: none;
+}
+
+.lesson-tabs .nav-link:hover, .lesson-tabs .nav-link:active, .lesson-tabs .nav-link:focus {
+	background-color: rgba(195, 15, 15, 1);
+	border-radius: 10px;
+	color: white;
+}
+
+.lesson-tabs .navbar-brand:hover, .lesson-tabs .navbar-brand:active, .lesson-tabs .navbar-brand:focus {
+	color: white;
+}
+
+.lesson-tabs .navbar-lessons {
+    background-color: rgba(3, 12, 84, 0.8);
+	color: white;
+	border-radius: 10px;
+	width: 100%;
+}

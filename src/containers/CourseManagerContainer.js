@@ -9,7 +9,7 @@ import "../css/course-manager-container.style.client.css"
 class CourseManagerContainer extends React.Component {
     state = {
         layout: 'grid',
-        showEditor: false,
+        showEditor: true,
         newCourseTitle: "New Course Title",
         courses: []
     }
@@ -85,12 +85,44 @@ class CourseManagerContainer extends React.Component {
 
     render() {
         return (
-            <div className="container-fluid">
-
+            <div className="container-fluid course-manager">
                 {
                     this.state.showEditor &&
-                    <CourseEditorComponent
-                        hideEditor={this.hideEditor} />
+                    <div>
+                        <nav className="navbar navbar-expand-lg nav-fill">
+                            <div className="navbar-brand mr-auto">
+                                <img src="icon.png" alt=""></img>
+                                Whiteboard
+                            </div>
+                            <button type="button" className="navbar-toggler btn-hamburger wbdv-field wbdv-hamburger btn" data-toggle="collapse"
+                                data-target="#collapsingNavbarSm">
+                                <img src="img/hamburger.svg" className="navbar-toggler-icon" alt=""></img>
+                            </button>
+                            <div className="navbar-collapse collapse" id="collapsingNavbarSm">
+                                <ul className="navbar-nav d-none d-lg-flex mr-auto">
+                                    <li className="nav-item">
+                                        <a className="nav-link course-manager-title wbdv-label wbdv-course-manager" href="#">
+                                            Course Manager
+                                    </a>
+                                    </li>
+                                </ul>
+                                <ul className="navbar-nav ml-auto">
+                                    <li className="nav-item">
+                                        <form className="form-inline">
+                                            <button className="btn btn-return wbdv-row wbdv-button" type="button" onClick={this.hideEditor}>
+                                                <img src="img/x.svg"></img>
+                                            </button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+
+                        <div className="container-fluid">
+                            <CourseEditorComponent
+                                hideEditor={this.hideEditor} />
+                        </div>
+                    </div>
                 }
 
                 {

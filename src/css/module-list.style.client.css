@@ -1,0 +1,27 @@
+.wbdv-module-list {
+    list-style-type: none;
+    margin: 10px 20px;
+}
+
+.wbdv-module-item-title {
+    color: white;
+}
+
+.module-list a:hover, .module-list a:focus, .module-list a:active {
+    text-decoration: none;
+}
+
+.module-list .nav-link:hover, .module-list .nav-link:active, .module-list .nav-link:focus {
+	background-color: rgba(195, 15, 15, 1);
+	border-radius: 10px;
+	color: white;
+}
+
+.wbdv-module-item {
+    margin: 10px 20px;
+    padding: 10px;
+    background-color: rgba(3, 12, 84, 0.8);
+	color: white;
+	border-radius: 10px;
+	width: 100%;
+}

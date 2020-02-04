@@ -24,7 +24,7 @@ class CourseRow extends React.Component {
                     <div className="col-sm-6 row wbdv-row wbdv-title">
                         <div className="col-sm-10">
                             <img src="img/doc.svg" alt="" className="doc-icon wbdv-row wbdv-icon"></img>
-                            <a onClick={this.props.showEditor} href="#">
+                            <a onClick={this.props.showEditor} href="#" className="course-title">
                                 {this.props.course.title}
                             </a>
                         </div>
