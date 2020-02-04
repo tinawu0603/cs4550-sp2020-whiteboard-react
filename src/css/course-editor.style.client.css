@@ -3,15 +3,12 @@
 }
 
 /* widget editor */
-body {
-	margin: 10px 20px;
-}
 
-.container {
+.course-editor .container {
 	width: 100%;
 }
 
-.row {
+.course-editor .row {
 	margin: 10px 15px;
 	text-align: left;
 }
@@ -40,7 +37,7 @@ body {
 	color: rgba(3, 12, 84, 0.8);
 }
 
-.btn-up, .btn-down {
+.course-editor .btn-up, .course-editor .btn-down {
 	background-color: rgba(3, 12, 84, 0.8);
 	float: right;
 }
@@ -58,7 +55,7 @@ body {
 	background-color: white;
 }
 
-.btn-x {
+.course-editor .btn-x {
 	background-color: rgba(195, 15, 15, 1);
 	float: right;
 }
@@ -85,14 +82,14 @@ body {
 }
 
 /* save and preview styles */
-.save-topic {
+.course-editor .save-topic {
 	background-color: green;
 	color: white;
 	padding: 0px 20px;
 	margin: 0px 20px;
 }
 
-.preview-title {
+.course-editor .preview-title {
 	font-size: 150%;
 	color: rgba(3, 12, 84, 0.8);
 	margin: 0 10px;

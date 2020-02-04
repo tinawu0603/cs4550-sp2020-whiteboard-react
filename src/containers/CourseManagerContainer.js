@@ -9,7 +9,7 @@ import "../css/course-manager-container.style.client.css"
 class CourseManagerContainer extends React.Component {
     state = {
         layout: 'grid',
-        showEditor: true,
+        showEditor: false,
         newCourseTitle: "New Course Title",
         courses: []
     }

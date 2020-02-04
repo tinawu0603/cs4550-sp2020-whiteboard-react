@@ -1,7 +1,3 @@
-.course-manager body {
-    margin: 10px 20px;
-}
-
 .course-manager a:hover, .course-manager a:focus, .course-manager a:active {
     text-decoration: none;
 }
