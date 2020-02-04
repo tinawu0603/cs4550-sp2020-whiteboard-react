@@ -1,14 +1,14 @@
 import React from "react";
-import Topic from "./TopicComponent"
+import TopicComponent from "./TopicComponent"
 import "../../css/topic-pills.style.client.css"
 
-const TopicPills = ({ topics }) =>
+const TopicPillsComponent = ({ topics }) =>
     <div className="topic-pills">
         <ul className="nav navbar-pills navbar-topics">
             {
                 topics.map(function (topic, index) {
                     return (
-                        <Topic topic={topic} />
+                        <TopicComponent topic={topic} />
                     )
                 })
             }
@@ -18,4 +18,4 @@ const TopicPills = ({ topics }) =>
         </ul>
     </div>
 
-export default TopicPills
+export default TopicPillsComponent

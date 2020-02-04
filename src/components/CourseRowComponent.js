@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/course-row.style.client.css"
 
-class CourseRow extends React.Component {
+class CourseRowComponent extends React.Component {
     state = {
         editing: false,
         updatedCourseTitle: "",
@@ -94,4 +94,4 @@ class CourseRow extends React.Component {
     }
 }
 
-export default CourseRow
+export default CourseRowComponent

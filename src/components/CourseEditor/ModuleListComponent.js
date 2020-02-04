@@ -1,5 +1,5 @@
 import React from "react";
-import Module from "./ModuleComponent";
+import ModuleComponent from "./ModuleComponent";
 import "../../css/module-list.style.client.css"
 
 const ModuleListComponent = ({ modules }) =>
@@ -8,7 +8,7 @@ const ModuleListComponent = ({ modules }) =>
             {
                 modules.map(function (module, index) {
                     return (
-                        <Module module={module} />
+                        <ModuleComponent module={module} />
                     )
                 })
             }

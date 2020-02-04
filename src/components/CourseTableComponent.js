@@ -1,5 +1,5 @@
 import React from "react";
-import CourseRow from "./CourseRow";
+import CourseRowComponent from "./CourseRowComponent";
 import "../css/course-table.style.client.css"
 
 const CourseTableComponent = ({ courses, deleteCourse, showEditor, updateCourse }) =>
@@ -31,7 +31,7 @@ const CourseTableComponent = ({ courses, deleteCourse, showEditor, updateCourse 
         {
             courses.map(function (course, index) {
                 return (
-                    <CourseRow
+                    <CourseRowComponent
                         index={index}
                         course={course}
                         showEditor={showEditor}

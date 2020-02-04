@@ -1,5 +1,5 @@
 import React from "react";
-import CourseCard from "./CourseCard"
+import CourseCardComponent from "./CourseCardComponent"
 import "../css/course-grid.style.client.css"
 
 const CourseGridComponent = ({ courses, deleteCourse, showEditor, updateCourse }) =>
@@ -27,7 +27,7 @@ const CourseGridComponent = ({ courses, deleteCourse, showEditor, updateCourse }
             {
                 courses.map(function (course, index) {
                     return (
-                        <CourseCard
+                        <CourseCardComponent
                             index={index}
                             course={course}
                             showEditor={showEditor}

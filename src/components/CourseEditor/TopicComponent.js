@@ -1,7 +1,7 @@
 import React from "react";
 import "../../css/topic.style.client.css"
 
-class Topic extends React.Component {
+class TopicComponent extends React.Component {
     state = {
         selected: false
     }
@@ -40,4 +40,4 @@ class Topic extends React.Component {
     }
 }
 
-export default Topic
+export default TopicComponent

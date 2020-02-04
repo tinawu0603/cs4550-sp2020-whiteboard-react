@@ -1,7 +1,7 @@
 import React from "react";
 import '../css/course-card.style.client.css'
 
-class CourseCard extends React.Component {
+class CourseCardComponent extends React.Component {
     state = {
         editing: false,
         updatedCourseTitle: "",
@@ -99,4 +99,4 @@ class CourseCard extends React.Component {
     }
 }
 
-export default CourseCard
+export default CourseCardComponent

@@ -1,7 +1,7 @@
 import React from "react";
 import ModuleListComponent from "./ModuleListComponent";
-import LessonTabs from "./LessonTabs";
-import TopicPills from "./TopicPills";
+import LessonTabsComponent from "./LessonTabsComponent";
+import TopicPillsComponent from "./TopicPillsComponent";
 import "../../css/course-editor.style.client.css"
 
 const CourseEditorComponent = ({ hideEditor }) =>
@@ -18,7 +18,7 @@ const CourseEditorComponent = ({ hideEditor }) =>
             </div>
             <div className="col-10">
                 {/* Lesson Tabs */}
-                <LessonTabs
+                <LessonTabsComponent
                     lessons={[
                         { _id: "123", title: "Build" },
                         { _id: "234", title: "Pages" },
@@ -29,7 +29,7 @@ const CourseEditorComponent = ({ hideEditor }) =>
                     ]} />
 
                 {/* Topic Pills */}
-                <TopicPills topics={[
+                <TopicPillsComponent topics={[
                     { _id: "123", title: "Topic 1" },
                     { _id: "234", title: "Topic 2" },
                     { _id: "345", title: "Topic 3" }

@@ -1,6 +1,6 @@
 import React from "react";
 
-class Module extends React.Component {
+class ModuleComponent extends React.Component {
     state = {
         selected: false
     }
@@ -39,4 +39,4 @@ class Module extends React.Component {
     }
 }
 
-export default Module
+export default ModuleComponent

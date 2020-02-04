@@ -1,14 +1,14 @@
 import React from "react";
-import Lesson from "./LessonComponent";
+import LessonComponent from "./LessonComponent";
 import "../../css/lesson-tabs.style.client.css"
 
-const LessonTabs = ({ lessons }) =>
+const LessonTabsComponent = ({ lessons }) =>
     <div className="lesson-tabs">
         <ul className="nav navbar-pills navbar-lessons">
             {
                 lessons.map(function (lesson, index) {
                     return (
-                        <Lesson lesson={lesson} />
+                        <LessonComponent lesson={lesson} />
                     )
                 })
             }
@@ -18,4 +18,4 @@ const LessonTabs = ({ lessons }) =>
         </ul>
     </div>
 
-export default LessonTabs
+export default LessonTabsComponent
