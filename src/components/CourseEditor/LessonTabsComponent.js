@@ -6,8 +6,31 @@ import LessonService from '../../services/LessonService'
 import { findLessonsForModule, createLesson, deleteLesson } from '../../actions/lessonActions'
 
 class LessonTabsComponent extends React.Component {
-    componentDidMount() {
-        this.props.findLessonsForModule(this.props.moduleId)
+    state = {
+        newLessonTitle: "New Lesson Title",
+        lessons: [],
+        courseId: this.props.courseId,
+        moduleId: this.props.moduleId,
+        lessonId: this.props.lessonId || "",
+    }
+
+    componentDidMount = async () => {
+        const lessons = await LessonService.findLessonsForModule(this.props.moduleId)
+        this.setState({
+            lessons: lessons.sort(compare)
+        })
+    }
+
+    componentDidUpdate = async () => {
+        const lessons = await LessonService.findLessonsForModule(this.props.moduleId)
+        this.setState({
+            lessons: lessons.sort(compare)
+        })
+        this.render();
+    }
+
+    updateForm = (newState) => {
+        this.setState(newState)
     }
 
     render() {
@@ -15,13 +38,29 @@ class LessonTabsComponent extends React.Component {
             <nav className="lesson-tabs nav-fill navbar-expand-lg navbar-pills">
                 <ul className="navbar-lessons mr-auto navbar-nav">
                     {
-                        this.props.lessons.map(function (lesson, index) {
+                        this.state.lessons &&
+                        this.state.lessons.map((lesson, index) => {
                             return (
-                                <LessonComponent lesson={lesson} />
+                                <LessonComponent lesson={lesson} moduleId={lesson._modules} courseId={this.state.courseId} lessonId={this.state.lessonId} />
                             )
                         })
                     }
-                    <button type="button" className="btn btn-new-lesson wbdv-new-page-btn lesson-title">+</button>
+                    <li class="lesson nav-item">
+                        <form className="form-inline course-editor">
+                            <input type="text" id="new-lesson-input" className="input-lg"
+                                aria-describedby="widget-input" placeholder="New Lesson Title" onChange={(e) => this.updateForm({
+                                    newLessonTitle: e.target.value
+                                })}></input>
+                            <button type="button" className="btn-plus btn" onClick={() => {
+                                this.props.createLesson(this.props.moduleId, {
+                                    title: this.state.newLessonTitle
+                                });
+                                document.getElementById("new-lesson-input").value = "";
+                            }}>
+                                <img src="/img/plus.svg" alt=""></img>
+                            </button>
+                        </form>
+                    </li>
                 </ul>
             </nav >
         )
@@ -50,7 +89,7 @@ const dispatchToPropertyMapper = (dispatch) => {
                 .then(actualLessons =>
                     dispatch(findLessonsForModule(actualLessons.sort(compare)))),
         deleteLesson: (lessonId) =>
-            LessonService.deleteLesson()
+            LessonService.deleteLesson(lessonId)
                 .then(status =>
                     dispatch(deleteLesson(lessonId))),
         createLesson: (moduleId, lesson) =>
