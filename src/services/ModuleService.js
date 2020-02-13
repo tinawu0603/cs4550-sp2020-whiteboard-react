@@ -35,8 +35,8 @@ export const deleteModule = (moduleId) =>
         .then(response => response.json())
 
 export default {
-    createCourse,
-    findModuleForCourse,
+    createModule,
+    findModulesForCourse,
     findModule,
     updateModule,
     deleteModule
