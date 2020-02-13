@@ -10,6 +10,7 @@ const CourseListComponent =
         newCourseTitle,
         addCourse,
         layout,
+        toggleLink,
         courses,
         deleteCourse,
         updateCourse
@@ -48,7 +49,7 @@ const CourseListComponent =
                                 </form>
                             </li>
                             <li className="nav-item">
-                                <button className="btn" type="button" onClick={toggle}>
+                                <Link to={`/${toggleLink}`} className="btn" type="button" onClick={toggle}>
                                     {
                                         layout === 'table' &&
                                         <img src="img/grid.svg" alt="" className="wbdv-icon"></img>
@@ -57,7 +58,7 @@ const CourseListComponent =
                                         layout === 'grid' &&
                                         <img src="img/list.svg" alt="" className="wbdv-icon"></img>
                                     }
-                                </button>
+                                </Link>
                             </li>
                         </ul>
                     </div>
@@ -79,7 +80,7 @@ const CourseListComponent =
                             courses={courses} />
                     }
                 </div>
-            </div>
+            </div >
 
         </div >
 

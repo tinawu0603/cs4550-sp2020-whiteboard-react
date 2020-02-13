@@ -35,9 +35,9 @@ const CourseEditorComponent = ({ history, courseId, moduleId, lessonId, topicId 
                 <div className="navbar-collapse collapse" id="collapsingNavbarSm">
                     <ul className="navbar-nav d-none d-lg-flex mr-auto">
                         <li className="nav-item">
-                            <a className="nav-link course-manager-title wbdv-label wbdv-course-manager" href="#">
+                            <Link to="/" className="nav-link course-manager-title wbdv-label wbdv-course-manager">
                                 Course Manager
-                        </a>
+                        </Link>
                         </li>
                     </ul>
                     <ul className="ml-auto navbar-nav">

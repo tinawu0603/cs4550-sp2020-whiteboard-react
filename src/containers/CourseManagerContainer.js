@@ -99,7 +99,7 @@ class CourseManagerContainer extends React.Component {
                             deleteCourse={this.deleteCourse}
                             updateCourse={this.updateCourse} />
                     } />
-                <Route path="/:layout"
+                <Route path="/grid"
                     exact={true}
                     render={(props) =>
                         <CourseListComponent {...props}
@@ -107,7 +107,22 @@ class CourseManagerContainer extends React.Component {
                             updateForm={this.updateForm}
                             newCourseTitle={this.state.newCourseTitle}
                             addCourse={this.addCourse}
-                            layout={props.match.params.layout}
+                            layout="grid"
+                            toggleLink="table"
+                            courses={this.state.courses}
+                            deleteCourse={this.deleteCourse}
+                            updateCourse={this.updateCourse} />
+                    } />
+                <Route path="/table"
+                    exact={true}
+                    render={(props) =>
+                        <CourseListComponent {...props}
+                            toggle={this.toggle}
+                            updateForm={this.updateForm}
+                            newCourseTitle={this.state.newCourseTitle}
+                            addCourse={this.addCourse}
+                            layout="table"
+                            toggleLink="grid"
                             courses={this.state.courses}
                             deleteCourse={this.deleteCourse}
                             updateCourse={this.updateCourse} />
