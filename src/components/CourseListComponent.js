@@ -28,7 +28,7 @@ const CourseListComponent =
                     <div className="navbar-collapse collapse" id="collapsingNavbarSm">
                         <ul className="navbar-nav d-none d-lg-flex mr-auto">
                             <li className="nav-item">
-                                <Link to={"/"} className="nav-link course-manager-title wbdv-label wbdv-course-manager">
+                                <Link to={`/${layout}`} className="nav-link course-manager-title wbdv-label wbdv-course-manager">
                                     Course Manager
                         </Link>
                             </li>
