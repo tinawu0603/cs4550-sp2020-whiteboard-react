@@ -2,6 +2,62 @@
     margin: 10px 20px;
 }
 
+/* input */
+.course-editor #new-module-input {
+	margin: 0 5px;
+}
+
+.course-editor #new-lesson-input {
+	margin: 0 5px;
+}
+
+.course-editor #new-topic-input {
+	margin: 0 5px;
+}
+
+.course-editor .navbar-nav {
+    z-index: 1;
+}
+
+.course-editor .btn-plus {
+    float: right;
+    padding: 5px;
+    background-color: rgba(195, 15, 15, 1);
+}
+
+.course-editor #new-course-input {
+    border-radius: 10px;
+    width: 80%;
+    height: 40px;
+}
+
+.course-editor #new-course-input::placeholder {
+    padding: 5px;
+}
+
+.course-editor input, .course-editor textarea {
+    color: rgba(3, 12, 84, 0.8);
+    padding: 5px;
+}
+
+.course-editor .navbar-brand:hover, .course-editor .navbar-brand:active, .course-editor .navbar-brand:focus, .course-editor .navbar-brand {
+    color: white;
+}
+
+.course-editor .navbar {
+    background-color: rgba(3, 12, 84, 0.8);
+    color: white;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.course-editor .course-editor-title, .course-editor .course-editor-title:hover, .course-editor .course-editor-title:active, .course-editor .course-editor-title:focus {
+    background-color: rgba(195, 15, 15, 1);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
 /* widget editor */
 
 .course-editor .container {
