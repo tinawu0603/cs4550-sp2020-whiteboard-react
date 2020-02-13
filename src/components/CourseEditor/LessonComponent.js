@@ -71,7 +71,7 @@ class LessonComponent extends React.Component {
                         }}>
                             <img src="/img/edit-white.svg" className="edit-icon"></img>
                         </button>
-                        <button className="btn btn-delete-course" type="button" onClick={() => {
+                        <button className="btn btn-delete-lesson" type="button" onClick={() => {
                             this.props.deleteLesson(this.props.lesson._id);
                         }
                         }>
