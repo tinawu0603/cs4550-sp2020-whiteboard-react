@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/course-row.style.client.css"
+import { Link } from "react-router-dom"
 
 class CourseRowComponent extends React.Component {
     state = {
@@ -24,9 +25,9 @@ class CourseRowComponent extends React.Component {
                     <div className="col-sm-6 row wbdv-row wbdv-title">
                         <div className="col-sm-10">
                             <img src="img/doc.svg" alt="" className="doc-icon wbdv-row wbdv-icon"></img>
-                            <a onClick={this.props.showEditor} href="#" className="course-title">
+                            <Link to={`/course-editor/${this.props.course._id}`} className="course-title">
                                 {this.props.course.title}
-                            </a>
+                            </Link>
                         </div>
                         <div className="col-sm-2 d-none d-lg-flex">
                             <button className="btn btn-edit-course" type="button" onClick={() => {

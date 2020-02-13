@@ -1,5 +1,6 @@
 import React from "react";
 import '../css/course-card.style.client.css'
+import { Link } from "react-router-dom";
 
 class CourseCardComponent extends React.Component {
     state = {
@@ -24,9 +25,9 @@ class CourseCardComponent extends React.Component {
                     !this.state.editing &&
                     <div className="card-body">
                         <div className="row">
-                            <a onClick={this.props.showEditor} className="course-title" href="#">
+                            <Link to={`/course-editor/${this.props.course._id}`} className="course-title">
                                 {this.props.course.title}
-                            </a>
+                            </Link>
                         </div>
                         <div className="row">
                             <i className="course-info">Modified Just now</i>

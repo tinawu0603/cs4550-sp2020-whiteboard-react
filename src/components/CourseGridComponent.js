@@ -2,7 +2,7 @@ import React from "react";
 import CourseCardComponent from "./CourseCardComponent"
 import "../css/course-grid.style.client.css"
 
-const CourseGridComponent = ({ courses, deleteCourse, showEditor, updateCourse }) =>
+const CourseGridComponent = ({ courses, deleteCourse, updateCourse }) =>
     <div>
         <div className="form-group row header-bar d-none d-lg-flex">
             <div className="col-sm-8">
@@ -30,7 +30,6 @@ const CourseGridComponent = ({ courses, deleteCourse, showEditor, updateCourse }
                         <CourseCardComponent
                             index={index}
                             course={course}
-                            showEditor={showEditor}
                             deleteCourse={deleteCourse}
                             updateCourse={updateCourse} />
                     )

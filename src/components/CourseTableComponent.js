@@ -2,7 +2,7 @@ import React from "react";
 import CourseRowComponent from "./CourseRowComponent";
 import "../css/course-table.style.client.css"
 
-const CourseTableComponent = ({ courses, deleteCourse, showEditor, updateCourse }) =>
+const CourseTableComponent = ({ courses, deleteCourse, updateCourse }) =>
     <div>
         <div className="form-group row header-bar d-none d-lg-flex">
             <div className="col-sm-6">
@@ -34,7 +34,6 @@ const CourseTableComponent = ({ courses, deleteCourse, showEditor, updateCourse 
                     <CourseRowComponent
                         index={index}
                         course={course}
-                        showEditor={showEditor}
                         deleteCourse={deleteCourse}
                         updateCourse={updateCourse} />
                 )
