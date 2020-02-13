@@ -35,7 +35,7 @@ const CourseEditorComponent = ({ history, courseId, moduleId, lessonId, topicId 
                 <div className="navbar-collapse collapse" id="collapsingNavbarSm">
                     <ul className="navbar-nav d-none d-lg-flex mr-auto">
                         <li className="nav-item">
-                            <Link to="/" className="nav-link course-manager-title wbdv-label wbdv-course-manager">
+                            <Link to="/table" className="nav-link course-manager-title wbdv-label wbdv-course-manager">
                                 Course Manager
                         </Link>
                         </li>
@@ -43,7 +43,7 @@ const CourseEditorComponent = ({ history, courseId, moduleId, lessonId, topicId 
                     <ul className="ml-auto navbar-nav">
                         <li className="nav-item">
                             <form className="form-inline">
-                                <Link to="/">
+                                <Link to="/table">
                                     <button className="btn btn-return wbdv-row wbdv-button" type="button" onClick={() => {
                                         history.push("/");
                                     }}>
