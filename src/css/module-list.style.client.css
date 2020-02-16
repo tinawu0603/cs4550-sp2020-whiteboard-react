@@ -7,6 +7,13 @@
     color: white;
 }
 
+.btn-module-plus {
+	width: 90%;
+    background-color: rgba(195, 15, 15, 1);
+    float: left;
+    margin: 0 5px;
+}
+
 .module-list a:hover, .module-list a:focus, .module-list a:active {
     text-decoration: none;
 }

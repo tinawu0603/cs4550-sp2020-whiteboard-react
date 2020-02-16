@@ -57,13 +57,13 @@ const CourseEditorComponent = ({ history, courseId, moduleId, lessonId, topicId 
                 </div>
             </nav>
             <div className="row course-editor">
-                <div className="col-4">
+                <div className="col-2">
                     {/* Module List */}
                     <ModuleListComponent
                         courseId={courseId}
                         moduleId={moduleId} />
                 </div>
-                <div className="col-8">
+                <div className="col-10">
                     {/* Lesson Tabs */}
                     <LessonTabsComponent
                         moduleId={moduleId}

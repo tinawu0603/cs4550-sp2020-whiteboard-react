@@ -46,19 +46,21 @@ class ModuleListComponent extends React.Component {
                             )
                         })
                     }
-                    <li class="module-item wbdv-module-item">
-                        <form className="form-inline">
+                    <li className="module-item wbdv-module-item">
+                        <div className="row">
                             <input type="text" id="new-module-input" className="input-lg"
-                                aria-describedby="widget-input" placeholder="New Module Title" onChange={(e) => this.updateForm({
+                                aria-describedby="widget-input" placeholder="New Module" onChange={(e) => this.updateForm({
                                     newModuleTitle: e.target.value
                                 })}></input>
-                            <button type="button" className="btn-plus btn" onClick={() => {
+                        </div>
+                        <div className="row">
+                            <button type="button" className="btn btn-plus btn-block btn-module-plus" onClick={() => {
                                 this.props.createModule(this.props.courseId, { title: this.state.newModuleTitle });
                                 document.getElementById("new-module-input").value = "";
                             }}>
                                 <img src="/img/plus.svg" alt=""></img>
                             </button>
-                        </form>
+                        </div>
                     </li>
                 </ul >
             </div >

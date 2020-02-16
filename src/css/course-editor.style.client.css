@@ -1,9 +1,10 @@
 .course-editor {
-    margin: 10px 20px;
+    margin: 10px 0;
 }
 
 /* input */
 .course-editor #new-module-input {
+	width: 90%;
 	margin: 0 5px;
 }
 
