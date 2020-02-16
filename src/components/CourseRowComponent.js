@@ -36,7 +36,7 @@ class CourseRowComponent extends React.Component {
                                     updatedCourseTitle: this.props.course.title
                                 })
                             }}>
-                                <img src="img/edit.svg" className="edit-icon"></img>
+                                <img src="img/edit.svg" alt="" className="edit-icon"></img>
                                 Edit
                             </button>
                         </div>
@@ -54,7 +54,7 @@ class CourseRowComponent extends React.Component {
                                 }}></input>
                         </div>
                         <div className="col-sm-2 d-none d-lg-flex">
-                            <button className="btn btn-save-course" type="button" onClick={this.updateCourse} onClick={() => {
+                            <button className="btn btn-save-course" type="button" onClick={() => {
                                 this.props.updateCourse({
                                     title: this.state.updatedCourseTitle,
                                     nuid: this.props.course.nuid,
@@ -87,7 +87,7 @@ class CourseRowComponent extends React.Component {
                 </div>
                 <div class="col-sm-2">
                     <button class="btn btn-delete-course wbdv-row wbdv-button wbdv-delete" type="button" onClick={() => this.props.deleteCourse(this.props.course)}>
-                        <img src="img/x.svg"></img>
+                        <img src="img/x.svg" alt=""></img>
                     </button>
                 </div>
             </div >

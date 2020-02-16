@@ -5,7 +5,7 @@ import "../../css/course-editor.style.client.css"
 import "../../css/styles.css"
 import { connect } from "react-redux";
 import ModuleService from '../../services/ModuleService'
-import { findModulesForCourse, createModule, deleteModule, updateModule } from '../../actions/moduleActions'
+import { findModulesForCourse, createModule, deleteModule } from '../../actions/moduleActions'
 
 class ModuleListComponent extends React.Component {
     state = {

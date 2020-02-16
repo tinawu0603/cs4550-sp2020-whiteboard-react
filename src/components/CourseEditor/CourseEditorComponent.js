@@ -47,7 +47,7 @@ const CourseEditorComponent = ({ history, courseId, moduleId, lessonId, topicId 
                                     <button className="btn btn-return wbdv-row wbdv-button" type="button" onClick={() => {
                                         history.push("/");
                                     }}>
-                                        <img src="/img/x.svg"></img>
+                                        <img src="/img/x.svg" alt=""></img>
 
                                     </button>
                                 </Link>

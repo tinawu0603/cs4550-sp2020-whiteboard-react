@@ -3,7 +3,7 @@ import "../../css/lesson-tabs.style.client.css"
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import LessonService from '../../services/LessonService'
-import { findLessonsForModule, createLesson, deleteLesson } from '../../actions/lessonActions'
+import { findLessonsForModule, deleteLesson } from '../../actions/lessonActions'
 
 class LessonComponent extends React.Component {
     state = {
@@ -42,13 +42,13 @@ class LessonComponent extends React.Component {
                                 updatedLessonTitle: this.props.lesson.title
                             })
                         }}>
-                            <img src="/img/edit-white.svg" className="edit-icon"></img>
+                            <img src="/img/edit-white.svg" alt="" className="edit-icon"></img>
                         </button>
                         <button className="btn btn-delete-lesson" type="button" onClick={() => {
                             this.props.deleteLesson(this.props.lesson._id);
                         }
                         }>
-                            <img src="/img/x.svg" className="delete-icon"></img>
+                            <img src="/img/x.svg" alt="" className="delete-icon"></img>
                         </button>
                     </li >
                 }
@@ -69,13 +69,13 @@ class LessonComponent extends React.Component {
                                 updatedLessonTitle: this.props.lesson.title
                             })
                         }}>
-                            <img src="/img/edit-white.svg" className="edit-icon"></img>
+                            <img src="/img/edit-white.svg" alt="" className="edit-icon"></img>
                         </button>
                         <button className="btn btn-delete-lesson" type="button" onClick={() => {
                             this.props.deleteLesson(this.props.lesson._id);
                         }
                         }>
-                            <img src="/img/x.svg" className="delete-icon"></img>
+                            <img src="/img/x.svg" alt="" className="delete-icon"></img>
                         </button>
                     </li>
                 }
@@ -99,7 +99,7 @@ class LessonComponent extends React.Component {
                                 editing: false
                             });
                         }}>
-                            <img src="/img/save.svg" className="save-icon"></img>
+                            <img src="/img/save.svg" alt="" className="save-icon"></img>
                         </button>
                         <button className="btn" type="button" onClick={() => {
                             this.updateForm({
@@ -107,7 +107,7 @@ class LessonComponent extends React.Component {
                                 editing: false
                             })
                         }}>
-                            <img src="/img/x.svg" className="delete-icon"></img>
+                            <img src="/img/x.svg" alt="" className="delete-icon"></img>
                         </button>
                     </li>
                 }

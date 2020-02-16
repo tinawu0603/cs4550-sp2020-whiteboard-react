@@ -3,7 +3,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom"
 import ModuleService from '../../services/ModuleService'
-import { findModulesForCourse, createModule, deleteModule, updateModule } from '../../actions/moduleActions'
+import { findModulesForCourse, deleteModule } from '../../actions/moduleActions'
 
 class ModuleComponent extends React.Component {
     state = {
@@ -43,13 +43,13 @@ class ModuleComponent extends React.Component {
                                 updatedModuleTitle: this.props.module.title
                             })
                         }}>
-                            <img src="/img/edit-white.svg" className="edit-icon"></img>
+                            <img src="/img/edit-white.svg" alt="" className="edit-icon"></img>
                         </button>
                         <button className="btn btn-delete-course" type="button" onClick={() => {
                             this.props.deleteModule(this.props.module._id);
                         }
                         }>
-                            <img src="/img/x.svg" className="delete-icon"></img>
+                            <img src="/img/x.svg" alt="" className="delete-icon"></img>
                         </button>
                     </li>
                 }
@@ -69,13 +69,13 @@ class ModuleComponent extends React.Component {
                                 updatedModuleTitle: this.props.module.title
                             })
                         }}>
-                            <img src="/img/edit-white.svg" className="edit-icon"></img>
+                            <img src="/img/edit-white.svg" alt="" className="edit-icon"></img>
                         </button>
                         <button className="btn btn-delete-course" type="button" onClick={() => {
                             this.props.deleteModule(this.props.module._id);
                         }
                         }>
-                            <img src="/img/x.svg" className="delete-icon"></img>
+                            <img src="/img/x.svg" alt="" className="delete-icon"></img>
                         </button>
                     </li>
                 }
@@ -99,7 +99,7 @@ class ModuleComponent extends React.Component {
                                 editing: false
                             });
                         }}>
-                            <img src="/img/save.svg" className="save-icon"></img>
+                            <img src="/img/save.svg" alt="" className="save-icon"></img>
                         </button>
                         <button className="btn" type="button" onClick={() => {
                             this.updateForm({
@@ -107,7 +107,7 @@ class ModuleComponent extends React.Component {
                                 editing: false
                             })
                         }}>
-                            <img src="/img/x.svg" className="delete-icon"></img>
+                            <img src="/img/x.svg" alt="" className="delete-icon"></img>
                         </button>
                     </li>
                 }

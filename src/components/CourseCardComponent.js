@@ -20,7 +20,7 @@ class CourseCardComponent extends React.Component {
                     selected: !this.state.selected
                 })}
                 style={{ 'backgroundColor': this.state.selected ? '#8491fb' : 'white' }}>
-                <img className="card-img-top" src="img/card-img.png" />
+                <img className="card-img-top" alt="" src="img/card-img.png" />
                 {
                     !this.state.editing &&
                     <div className="card-body">
@@ -39,13 +39,13 @@ class CourseCardComponent extends React.Component {
                                     updatedCourseTitle: this.props.course.title
                                 })
                             }}>
-                                <img src="img/edit.svg" className="edit-icon"></img>
+                                <img alt="" src="img/edit.svg" className="edit-icon"></img>
                                 Rename
                                 </button>
                         </div>
                         <div className="row">
                             <button className="btn btn-block btn-delete-course" type="button" onClick={() => this.props.deleteCourse(this.props.course)}>
-                                <img src="img/x.svg" className="delete-icon"></img>
+                                <img alt="" src="img/x.svg" className="delete-icon"></img>
                                 Delete
                                 </button>
                         </div>
@@ -67,7 +67,7 @@ class CourseCardComponent extends React.Component {
                         </div>
                         <div className="row">
                             <div className="col-sm-6">
-                                <button className="btn btn-block btn-save-course" type="button" onClick={this.updateCourse} onClick={() => {
+                                <button className="btn btn-block btn-save-course" type="button" onClick={() => {
                                     this.props.updateCourse({
                                         title: this.state.updatedCourseTitle,
                                         nuid: this.props.course.nuid,
@@ -78,7 +78,7 @@ class CourseCardComponent extends React.Component {
                                         editing: false
                                     });
                                 }}>
-                                    <img src="img/save.svg" className="save-icon"></img>
+                                    <img alt="" src="img/save.svg" className="save-icon"></img>
                                     Save
                                 </button>
                             </div>

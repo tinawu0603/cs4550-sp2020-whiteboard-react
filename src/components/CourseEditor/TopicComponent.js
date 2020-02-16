@@ -42,13 +42,13 @@ class TopicComponent extends React.Component {
                                 updatedTopicTitle: this.props.topic.title
                             })
                         }}>
-                            <img src="/img/edit-white.svg" className="edit-icon"></img>
+                            <img src="/img/edit-white.svg" alt="" className="edit-icon"></img>
                         </button>
                         <button className="btn btn-delete-topic" type="button" onClick={() => {
                             this.props.deleteTopic(this.props.topic._id);
                         }
                         }>
-                            <img src="/img/x.svg" className="delete-icon"></img>
+                            <img src="/img/x.svg" alt="" className="delete-icon"></img>
                         </button>
                     </li>
                 }
@@ -69,13 +69,13 @@ class TopicComponent extends React.Component {
                                 updatedTopicTitle: this.props.topic.title
                             })
                         }}>
-                            <img src="/img/edit-white.svg" className="edit-icon"></img>
+                            <img src="/img/edit-white.svg" alt="" className="edit-icon"></img>
                         </button>
                         <button className="btn btn-delete-topic" type="button" onClick={() => {
                             this.props.deleteTopic(this.props.topic._id);
                         }
                         }>
-                            <img src="/img/x.svg" className="delete-icon"></img>
+                            <img src="/img/x.svg" alt="" className="delete-icon"></img>
                         </button>
                     </li >
                 }
@@ -98,14 +98,14 @@ class TopicComponent extends React.Component {
                                 editing: false
                             });
                         }}>
-                            <img src="/img/save.svg" className="save-icon"></img>
+                            <img src="/img/save.svg" alt="" className="save-icon"></img>
                         </button>
                         <button className="btn" type="button" onClick={() => {
                             this.updateForm({
                                 editing: false
                             })
                         }}>
-                            <img src="/img/x.svg" className="delete-icon"></img>
+                            <img src="/img/x.svg" alt="" className="delete-icon"></img>
                         </button>
                     </li>
                 }
