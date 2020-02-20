@@ -11,11 +11,14 @@ import lessonReducer from "../../reducers/lessonReducer"
 import topicReducer from "../../reducers/topicReducer"
 import "../../css/styles.css"
 import "../../css/course-manager-container.style.client.css"
+import WidgetListComponent from "./WidgetListComponent";
+import widgetReducer from "../../reducers/widgetReducer";
 
 const rootReducer = combineReducers({
     modules: moduleReducer,
     lessons: lessonReducer,
-    topics: topicReducer
+    topics: topicReducer,
+    widgets: widgetReducer
 })
 
 const store = createStore(rootReducer)
@@ -77,13 +80,20 @@ const CourseEditorComponent = ({ history, courseId, moduleId, lessonId, topicId 
                         topicId={topicId} />
 
                     {/* Widgets */}
+                    <WidgetListComponent
+                        lessonId={lessonId}
+                        moduleId={moduleId}
+                        courseId={courseId}
+                        topicId={topicId} />
+
+                    {/*
                     <div class="row">
                         <button type="button" class="save-topic btn">
                             Save
-					</button>
+					    </button>
                         <label class="preview-title">
                             Preview
-					</label>
+					    </label>
                         <label class="switch" for="preview">
                             <input id="preview" type="checkbox" />
                             <span class="slider round"></span>
@@ -94,7 +104,7 @@ const CourseEditorComponent = ({ history, courseId, moduleId, lessonId, topicId 
                             <div class="col-sm-12">
                                 <label class="widget-title">
                                     Heading Widget
-							</label>
+							    </label>
                                 <button type="button" class="btn-x btn">
                                     <img src="img/x.svg" alt="" />
                                 </button>
@@ -157,6 +167,7 @@ const CourseEditorComponent = ({ history, courseId, moduleId, lessonId, topicId 
                             </div>
                         </div>
                     </div>
+                    */}
                 </div>
             </div>
 

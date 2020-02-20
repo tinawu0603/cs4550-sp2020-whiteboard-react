@@ -79,7 +79,7 @@ const compare = (a, b) => {
 
 const stateToPropertyMapper = (state) => {
     return {
-        lessons: state.topics.topics
+        topics: state.topics.topics
     }
 }
 

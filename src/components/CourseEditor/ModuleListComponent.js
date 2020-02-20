@@ -90,7 +90,7 @@ const dispatchToPropertyMapper = (dispatch) => {
                 .then(actualModules =>
                     dispatch(findModulesForCourse(actualModules.sort(compare)))),
         deleteModule: (moduleId) =>
-            ModuleService.deleteModule()
+            ModuleService.deleteModule(moduleId)
                 .then(status =>
                     dispatch(deleteModule(moduleId))),
         createModule: (courseId, module) =>
