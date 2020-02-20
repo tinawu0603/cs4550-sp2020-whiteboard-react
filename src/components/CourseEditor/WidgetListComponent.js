@@ -1,12 +1,11 @@
 import React from "react";
-import Fragment from "react";
 import { connect } from "react-redux";
 import "../../css/widget-list.style.client.css"
 import "../../css/course-editor.style.client.css"
 import "../../css/styles.css"
 import HeadingWidgetComponent from "./Widget/HeadingWidgetComponent";
 import WidgetService from "../../services/WidgetService";
-import { findWidgetsForTopic, createWidget, deleteWidget } from '../../actions/widgetActions'
+import { findWidgetsForTopic, createWidget, deleteWidget, updateWidgetUp, updateWidgetDown } from '../../actions/widgetActions'
 import ParagraphWidgetComponent from "./Widget/ParagraphWidgetComponent";
 
 class WidgetListComponent extends React.Component {
@@ -16,6 +15,7 @@ class WidgetListComponent extends React.Component {
         newWidgetValue: "",
         widgets: [],
         widget: {},
+        topicId: this.props.topicId
     }
 
     componentDidMount = async () => {
@@ -77,10 +77,18 @@ class WidgetListComponent extends React.Component {
                                     })}>
                                     <img className="btn-edit" src="/img/edit.svg" alt="" />
                                 </button>
-                                <button type="button" class="btn-down btn">
+                                <button type="button" class="btn-down btn" onClick={() => {
+                                    this.props.updateWidgetDown(this.props.topidId, widget);
+                                    console.log(this.props.topicId);
+                                    console.log(this.state.widgets);
+                                }}>
                                     <img className="btn-arrow" src="/img/arrow-down.svg" alt="" />
                                 </button>
-                                <button type="button" className="btn-up btn">
+                                <button type="button" className="btn-up btn" onClick={() => {
+                                    this.props.updateWidgetUp(this.props.topidId, widget);
+                                    console.log(this.props.topicId);
+                                    console.log(this.state.widgets);
+                                }}>
                                     <img className="btn-arrow" src="/img/arrow-up.svg" alt="" />
                                 </button>
                             </div>
@@ -104,12 +112,12 @@ class WidgetListComponent extends React.Component {
                 <li className="new-widget-section">
                     <div class="row new-widget">
                         <label className="new-widget-label">Widget Title</label>
-                        <input type="text" id="new-widget-input" className="input-lg"
+                        <input type="text" id="new-widget-title-input" className="input-lg"
                             aria-describedby="widget-input" placeholder="Widget Name" onChange={(e) => this.setState({
                                 newWidgetTitle: e.target.value
                             })}></input>
                         <label className="new-widget-label">Widget Value</label>
-                        <input type="text" id="new-widget-input" className="input-lg"
+                        <input type="text" id="new-widget-value-input" className="input-lg"
                             aria-describedby="widget-input" placeholder="Widget Value" onChange={(e) => this.setState({
                                 newWidgetValue: e.target.value
                             })}></input>
@@ -123,7 +131,9 @@ class WidgetListComponent extends React.Component {
                                 value: this.state.newWidgetValue,
                                 type: document.getElementById("create-widget-select").value
                             });
-                            document.getElementById("new-widget-input").value = "";
+                            document.getElementById("new-widget-title-input").value = "";
+                            document.getElementById("new-widget-value-input").value = "";
+                            document.getElementById("create-widget-select").value = "HEADING";
                         }}>
                             <img src="/img/plus.svg" alt="" />
                         </button>
@@ -136,7 +146,7 @@ class WidgetListComponent extends React.Component {
 }
 
 const compare = (a, b) => {
-    if (a._createdAt <= b._createdAt) {
+    if (a.order < b.order) {
         return -1
     }
     else {
@@ -173,7 +183,17 @@ const dispatchToPropertyMapper = (dispatch) => {
         findWidgetsForTopic: (topicId) =>
             WidgetService.findWidgetsForTopic(topicId)
                 .then(actualWidgets =>
-                    dispatch(findWidgetsForTopic(actualWidgets.sort(compare))))
+                    dispatch(findWidgetsForTopic(actualWidgets.sort(compare)))),
+
+        updateWidgetUp: (topicId, widget) =>
+            WidgetService.updateWidgetUp(topicId, widget)
+                .then(actualWidgets =>
+                    dispatch(updateWidgetUp(actualWidgets.sort(compare)))),
+
+        updateWidgetDown: (topicId, widget) =>
+            WidgetService.updateWidgetDown(topicId, widget)
+                .then(actualWidgets =>
+                    dispatch(updateWidgetDown(actualWidgets.sort(compare))))
     }
 }
 

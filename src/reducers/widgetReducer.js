@@ -1,4 +1,4 @@
-import { CREATE_WIDGET, DELETE_WIDGET, FIND_WIDGETS_FOR_TOPIC, UPDATE_WIDGET } from "../actions/widgetActions";
+import { CREATE_WIDGET, DELETE_WIDGET, FIND_WIDGETS_FOR_TOPIC, UPDATE_WIDGET, UPDATE_WIDGET_UP, UPDATE_WIDGET_DOWN } from "../actions/widgetActions";
 
 const initialState = {
     widgets: []
@@ -24,6 +24,14 @@ const widgetReducer = (state = initialState, action) => {
         case UPDATE_WIDGET:
             return {
                 widgets: state.widgets.map(widget => widget._id === action.widgetId ? action.widget : widget)
+            }
+        case UPDATE_WIDGET_UP:
+            return {
+                widgets: action.widgets
+            }
+        case UPDATE_WIDGET_DOWN:
+            return {
+                widgets: action.widgets
             }
         default:
             return state

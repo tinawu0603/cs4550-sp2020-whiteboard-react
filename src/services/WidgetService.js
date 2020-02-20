@@ -8,6 +8,7 @@ export const createWidget = (topicId, widget) =>
             'content-type': 'application/json'
         }
     })
+        .then(console.log(topicId))
         .then(response => response.json())
 
 export const findWidgetsForTopic = (topicId) =>
@@ -34,10 +35,32 @@ export const deleteWidget = (widgetId) =>
     })
         .then(response => response.json())
 
+export const updateWidgetUp = (topicId, widget) =>
+    fetch(`${LOCALHOST8080}/api/topics/${topicId}/up`, {
+        method: 'POST',
+        body: JSON.stringify(widget),
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+
+export const updateWidgetDown = (topicId, widget) =>
+    fetch(`${LOCALHOST8080}/api/topics/${topicId}/down`, {
+        method: 'POST',
+        body: JSON.stringify(widget),
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+
 export default {
     createWidget,
     findWidgetsForTopic,
     findWidgetById,
     updateWidget,
-    deleteWidget
+    deleteWidget,
+    updateWidgetUp,
+    updateWidgetDown
 }

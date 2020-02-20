@@ -22,3 +22,15 @@ export const deleteWidget = (widgetId) => ({
     type: DELETE_WIDGET,
     widgetId: widgetId
 })
+
+export const UPDATE_WIDGET_UP = "UPDATE_WIDGET_UP"
+export const updateWidgetUp = (widgets) => ({
+    type: UPDATE_WIDGET_UP,
+    widgets: widgets
+})
+
+export const UPDATE_WIDGET_DOWN = "UPDATE_WIDGET_DOWN"
+export const updateWidgetDown = (widgets) => ({
+    type: UPDATE_WIDGET_DOWN,
+    widgets: widgets
+})
