@@ -78,16 +78,12 @@ class WidgetListComponent extends React.Component {
                                     <img className="btn-edit" src="/img/edit.svg" alt="" />
                                 </button>
                                 <button type="button" class="btn-down btn" onClick={() => {
-                                    this.props.updateWidgetDown(this.props.topidId, widget);
-                                    console.log(this.props.topicId);
-                                    console.log(this.state.widgets);
+                                    this.props.updateWidgetDown(widget);
                                 }}>
                                     <img className="btn-arrow" src="/img/arrow-down.svg" alt="" />
                                 </button>
                                 <button type="button" className="btn-up btn" onClick={() => {
-                                    this.props.updateWidgetUp(this.props.topidId, widget);
-                                    console.log(this.props.topicId);
-                                    console.log(this.state.widgets);
+                                    this.props.updateWidgetUp(widget);
                                 }}>
                                     <img className="btn-arrow" src="/img/arrow-up.svg" alt="" />
                                 </button>
@@ -185,15 +181,17 @@ const dispatchToPropertyMapper = (dispatch) => {
                 .then(actualWidgets =>
                     dispatch(findWidgetsForTopic(actualWidgets.sort(compare)))),
 
-        updateWidgetUp: (topicId, widget) =>
-            WidgetService.updateWidgetUp(topicId, widget)
+        updateWidgetUp: (widget) =>
+            WidgetService.updateWidgetUp(widget)
                 .then(actualWidgets =>
                     dispatch(updateWidgetUp(actualWidgets.sort(compare)))),
 
-        updateWidgetDown: (topicId, widget) =>
-            WidgetService.updateWidgetDown(topicId, widget)
+        updateWidgetDown: (widget) => {
+            WidgetService.updateWidgetDown(widget)
                 .then(actualWidgets =>
                     dispatch(updateWidgetDown(actualWidgets.sort(compare))))
+        }
+
     }
 }
 

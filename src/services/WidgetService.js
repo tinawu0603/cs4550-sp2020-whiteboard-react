@@ -35,8 +35,8 @@ export const deleteWidget = (widgetId) =>
     })
         .then(response => response.json())
 
-export const updateWidgetUp = (topicId, widget) =>
-    fetch(`${LOCALHOST8080}/api/topics/${topicId}/up`, {
+export const updateWidgetUp = (widget) =>
+    fetch(`${LOCALHOST8080}/api/widgets/up`, {
         method: 'POST',
         body: JSON.stringify(widget),
         headers: {
@@ -45,8 +45,8 @@ export const updateWidgetUp = (topicId, widget) =>
     })
         .then(response => response.json())
 
-export const updateWidgetDown = (topicId, widget) =>
-    fetch(`${LOCALHOST8080}/api/topics/${topicId}/down`, {
+export const updateWidgetDown = (widget) =>
+    fetch(`${LOCALHOST8080}/api/widgets/down`, {
         method: 'POST',
         body: JSON.stringify(widget),
         headers: {
