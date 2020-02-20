@@ -6,8 +6,7 @@ import "../../../css/styles.css"
 class HeadingWidgetComponent extends React.Component {
     state = {
         widget: this.props.widget,
-        topicId: this.props.topicId,
-        size: 1, // size of heading (1-6)
+        topicId: this.props.topicId
     }
 
     componentDidUpdate() {
