@@ -1,4 +1,5 @@
 import React from "react";
+import Fragment from "react";
 import { connect } from "react-redux";
 import "../../css/widget-list.style.client.css"
 import "../../css/course-editor.style.client.css"
@@ -6,6 +7,7 @@ import "../../css/styles.css"
 import HeadingWidgetComponent from "./Widget/HeadingWidgetComponent";
 import WidgetService from "../../services/WidgetService";
 import { findWidgetsForTopic, createWidget, deleteWidget } from '../../actions/widgetActions'
+import ParagraphWidgetComponent from "./Widget/ParagraphWidgetComponent";
 
 class WidgetListComponent extends React.Component {
     state = {
@@ -18,7 +20,6 @@ class WidgetListComponent extends React.Component {
 
     componentDidMount = async () => {
         const widgets = await WidgetService.findWidgetsForTopic(this.props.topicId)
-        console.log(widgets);
         this.setState({
             widgets: widgets.sort(compare)
         })
@@ -63,9 +64,12 @@ class WidgetListComponent extends React.Component {
                                 <button type="button" className="btn-x btn" onClick={() => this.props.deleteWidget(widget.id)}>
                                     <img src="/img/x.svg" alt="" />
                                 </button>
-                                <select className="custom-select widget-type-select">
-                                    <option selected value="heading">Heading</option>
-                                    <option value="paragraph">Paragraph</option>
+                                <select className="custom-select widget-type-select" onChange={(e) => {
+                                    widget.type = e.target.value;
+                                    this.props.updateWidget(widget.id, widget);
+                                }} value={widget.type}>
+                                    <option value="HEADING">Heading</option>
+                                    <option value="PARAGRAPH">Paragraph</option>
                                 </select>
                                 <button className="button btn btn-edit" onClick={() =>
                                     this.setState({
@@ -83,6 +87,13 @@ class WidgetListComponent extends React.Component {
                             {
                                 widget.type === "HEADING" &&
                                 <HeadingWidgetComponent
+                                    save={this.save}
+                                    editing={widget.id === this.state.widget.id}
+                                    widget={widget} />
+                            }
+                            {
+                                widget.type === "PARAGRAPH" &&
+                                <ParagraphWidgetComponent
                                     save={this.save}
                                     editing={widget.id === this.state.widget.id}
                                     widget={widget} />
