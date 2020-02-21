@@ -20,9 +20,12 @@ class HeadingWidgetComponent extends React.Component {
     render() {
         return (
             <div>
-                <div>
-                    <h1>{this.state.widget.title}</h1>
-                </div>
+                {
+                    !this.props.preview &&
+                    <div>
+                        <h1>{this.state.widget.title}</h1>
+                    </div>
+                }
                 {
                     !this.props.editing &&
                     <div>

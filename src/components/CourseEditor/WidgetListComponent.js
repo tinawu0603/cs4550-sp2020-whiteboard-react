@@ -15,7 +15,8 @@ class WidgetListComponent extends React.Component {
         newWidgetValue: "",
         widgets: [],
         widget: {},
-        topicId: this.props.topicId
+        topicId: this.props.topicId,
+        preview: false
     }
 
     componentDidMount = async () => {
@@ -53,12 +54,35 @@ class WidgetListComponent extends React.Component {
                         Preview
 					</label>
                     <label class="switch" for="preview">
-                        <input id="preview" type="checkbox" />
+                        <input id="preview" type="checkbox" onClick={() =>
+                            this.setState({ preview: !this.state.preview })} />
                         <span class="slider round"></span>
                     </label>
                 </li>
                 {
-                    this.state.widgets && this.state.widgets.map(widget =>
+                    this.state.widgets && this.state.preview && this.state.widgets.map(widget =>
+                        <li key={widget.id} className="editor widget-item">
+                            {
+                                widget.type === "HEADING" &&
+                                <HeadingWidgetComponent
+                                    preview={this.state.preview}
+                                    save={this.save}
+                                    editing={widget.id === this.state.widget.id}
+                                    widget={widget} />
+                            }
+                            {
+                                widget.type === "PARAGRAPH" &&
+                                <ParagraphWidgetComponent
+                                    preview={this.state.preview}
+                                    save={this.save}
+                                    editing={widget.id === this.state.widget.id}
+                                    widget={widget} />
+                            }
+                        </li>
+                    )
+                }
+                {
+                    this.state.widgets && !this.state.preview && this.state.widgets.map(widget =>
                         <li key={widget.id} className="editor widget-item">
                             <div className="row">
                                 <button type="button" className="btn-x btn" onClick={() => this.props.deleteWidget(widget.id)}>
