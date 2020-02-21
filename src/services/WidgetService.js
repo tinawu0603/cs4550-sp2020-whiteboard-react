@@ -8,7 +8,6 @@ export const createWidget = (topicId, widget) =>
             'content-type': 'application/json'
         }
     })
-        .then(console.log(topicId))
         .then(response => response.json())
 
 export const findWidgetsForTopic = (topicId) =>
