@@ -7,6 +7,7 @@ import HeadingWidgetComponent from "./Widget/HeadingWidgetComponent";
 import WidgetService from "../../services/WidgetService";
 import { findWidgetsForTopic, createWidget, deleteWidget, updateWidgetUp, updateWidgetDown } from '../../actions/widgetActions'
 import ParagraphWidgetComponent from "./Widget/ParagraphWidgetComponent";
+import ListWidgetComponent from "./Widget/ListWidgetComponent";
 
 class WidgetListComponent extends React.Component {
     state = {
@@ -78,6 +79,14 @@ class WidgetListComponent extends React.Component {
                                     editing={widget.id === this.state.widget.id}
                                     widget={widget} />
                             }
+                            {
+                                widget.type === "LIST" &&
+                                <ListWidgetComponent
+                                    preview={this.state.preview}
+                                    save={this.save}
+                                    editing={widget.id === this.state.widget.id}
+                                    widget={widget} />
+                            }
                         </li>
                     )
                 }
@@ -94,6 +103,7 @@ class WidgetListComponent extends React.Component {
                                 }} value={widget.type}>
                                     <option value="HEADING">Heading</option>
                                     <option value="PARAGRAPH">Paragraph</option>
+                                    <option value="LIST">List</option>
                                 </select>
                                 <button className="button btn btn-edit" onClick={() =>
                                     this.setState({
@@ -126,6 +136,13 @@ class WidgetListComponent extends React.Component {
                                     editing={widget.id === this.state.widget.id}
                                     widget={widget} />
                             }
+                            {
+                                widget.type === "LIST" &&
+                                <ListWidgetComponent
+                                    save={this.save}
+                                    editing={widget.id === this.state.widget.id}
+                                    widget={widget} />
+                            }
                         </li>
                     )
                 }
@@ -144,6 +161,7 @@ class WidgetListComponent extends React.Component {
                         <select className="custom-select widget-type-select" id="create-widget-select">
                             <option selected value="HEADING">Heading</option>
                             <option value="PARAGRAPH">Paragraph</option>
+                            <option value="LIST">List</option>
                         </select>
                         <button type="button" class="btn-plus btn btn-new-widget" onClick={() => {
                             this.props.createWidget(this.props.topicId, {
