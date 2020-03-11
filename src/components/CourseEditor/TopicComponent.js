@@ -9,9 +9,9 @@ class TopicComponent extends React.Component {
     state = {
         updatedTopicTitle: "",
         editing: false,
-        selectedUrl: `/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${this.props.topic._id}`,
-        unselectedUrl: `/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}`,
-        selected: this.props.topicId !== "" && this.props.topicId === this.props.topic._id
+        selectedUrl: `/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${this.props.topic.id}`,
+        unselectedUrl: `/ course - editor / ${this.props.courseId} /module/${this.props.moduleId} /lesson/${this.props.lessonId} `,
+        selected: this.props.topicId && this.props.topicId === this.props.topic.id.toString()
     }
 
     componentDidUpdate() {

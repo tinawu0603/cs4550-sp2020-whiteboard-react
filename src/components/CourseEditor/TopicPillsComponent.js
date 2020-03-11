@@ -26,7 +26,7 @@ class TopicPillsComponent extends React.Component {
         const topics = await TopicService.findTopicsForLesson(this.props.lessonId)
         this.setState({
             topics: topics.sort(compare)
-        })
+        });
         this.render();
     }
 

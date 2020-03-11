@@ -5,6 +5,7 @@ const initialState = {
 }
 
 const widgetReducer = (state = initialState, action) => {
+    console.log(action.type);
     switch (action.type) {
         case FIND_WIDGETS_FOR_TOPIC:
             return {

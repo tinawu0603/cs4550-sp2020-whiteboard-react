@@ -17,21 +17,14 @@ class WidgetListComponent extends React.Component {
         newWidgetValue: "",
         widgets: [],
         widget: {},
-        topicId: this.props.topicId,
+        topicId: this.props.topicId ? parseInt(this.props.topicId) : "",
         preview: false
     }
 
     componentDidMount = async () => {
         const widgets = await WidgetService.findWidgetsForTopic(this.props.topicId)
         this.setState({
-            widgets: widgets.sort(compare)
-        })
-    }
-
-    componentDidUpdate = async () => {
-        const widgets = await WidgetService.findWidgetsForTopic(this.props.topicId);
-        this.setState({
-            widgets: widgets.sort(compare)
+            widgets: widgets
         })
     }
 
@@ -41,7 +34,7 @@ class WidgetListComponent extends React.Component {
                 widget: widget
             }
         })
-        this.props.updateWidget(widget.id, widget);
+        this.props.updateWidget(parseInt(widget.id), widget);
         this.setState({ widget: {} });
     }
 
@@ -69,7 +62,7 @@ class WidgetListComponent extends React.Component {
                                 <HeadingWidgetComponent
                                     preview={this.state.preview}
                                     save={this.save}
-                                    editing={widget.id === this.state.widget.id}
+                                    editing={widget.id === parseInt(this.state.widget.id)}
                                     widget={widget} />
                             }
                             {
@@ -77,7 +70,7 @@ class WidgetListComponent extends React.Component {
                                 <ParagraphWidgetComponent
                                     preview={this.state.preview}
                                     save={this.save}
-                                    editing={widget.id === this.state.widget.id}
+                                    editing={widget.id === parseInt(this.state.widget.id)}
                                     widget={widget} />
                             }
                             {
@@ -85,7 +78,7 @@ class WidgetListComponent extends React.Component {
                                 <ListWidgetComponent
                                     preview={this.state.preview}
                                     save={this.save}
-                                    editing={widget.id === this.state.widget.id}
+                                    editing={widget.id === parseInt(this.state.widget.id)}
                                     widget={widget} />
                             }
                             {
@@ -93,7 +86,7 @@ class WidgetListComponent extends React.Component {
                                 <ImageWidgetComponent
                                     preview={this.state.preview}
                                     save={this.save}
-                                    editing={widget.id === this.state.widget.id}
+                                    editing={widget.id === parseInt(this.state.widget.id)}
                                     widget={widget} />
                             }
                         </li>
@@ -108,7 +101,7 @@ class WidgetListComponent extends React.Component {
                                 </button>
                                 <select className="custom-select widget-type-select" onChange={(e) => {
                                     widget.type = e.target.value;
-                                    this.props.updateWidget(widget.id, widget);
+                                    this.props.updateWidget(parseInt(widget.id), widget);
                                 }} value={widget.type}>
                                     <option value="HEADING">Heading</option>
                                     <option value="PARAGRAPH">Paragraph</option>
@@ -136,28 +129,28 @@ class WidgetListComponent extends React.Component {
                                 widget.type === "HEADING" &&
                                 <HeadingWidgetComponent
                                     save={this.save}
-                                    editing={widget.id === this.state.widget.id}
+                                    editing={widget.id === parseInt(this.state.widget.id)}
                                     widget={widget} />
                             }
                             {
                                 widget.type === "PARAGRAPH" &&
                                 <ParagraphWidgetComponent
                                     save={this.save}
-                                    editing={widget.id === this.state.widget.id}
+                                    editing={widget.id === parseInt(this.state.widget.id)}
                                     widget={widget} />
                             }
                             {
                                 widget.type === "LIST" &&
                                 <ListWidgetComponent
                                     save={this.save}
-                                    editing={widget.id === this.state.widget.id}
+                                    editing={widget.id === parseInt(this.state.widget.id)}
                                     widget={widget} />
                             }
                             {
                                 widget.type === "IMAGE" &&
                                 <ImageWidgetComponent
                                     save={this.save}
-                                    editing={widget.id === this.state.widget.id}
+                                    editing={widget.id === parseInt(this.state.widget.id)}
                                     widget={widget} />
                             }
                         </li>
@@ -182,7 +175,7 @@ class WidgetListComponent extends React.Component {
                             <option value="IMAGE">Image</option>
                         </select>
                         <button type="button" class="btn-plus btn btn-new-widget" onClick={() => {
-                            this.props.createWidget(this.props.topicId, {
+                            this.props.createWidget(parseInt(this.props.topicId), {
                                 title: this.state.newWidgetTitle,
                                 value: this.state.newWidgetValue,
                                 type: document.getElementById("create-widget-select").value
@@ -201,15 +194,6 @@ class WidgetListComponent extends React.Component {
 
 }
 
-const compare = (a, b) => {
-    if (a.order < b.order) {
-        return -1
-    }
-    else {
-        return 0
-    }
-}
-
 const stateToPropertyMapper = (state) => {
     return {
         widgets: state.widgets.widgets
@@ -219,37 +203,37 @@ const stateToPropertyMapper = (state) => {
 const dispatchToPropertyMapper = (dispatch) => {
     return {
         updateWidget: (widgetId, widget, topicId) => {
-            WidgetService.updateWidget(widgetId, widget)
+            WidgetService.updateWidget(parseInt(widgetId), widget)
                 .then(status =>
-                    WidgetService.findWidgetsForTopic(topicId)
+                    WidgetService.findWidgetsForTopic(parseInt(widget.topicId))
                         .then(actualWidgets =>
-                            dispatch(findWidgetsForTopic(actualWidgets.sort(compare)))))
+                            dispatch(findWidgetsForTopic(actualWidgets))))
         },
 
         deleteWidget: (widgetId) =>
-            WidgetService.deleteWidget(widgetId)
+            WidgetService.deleteWidget(parseInt(widgetId))
                 .then(status =>
                     dispatch(deleteWidget(widgetId))),
 
         createWidget: (topicId, widget) =>
-            WidgetService.createWidget(topicId, widget)
+            WidgetService.createWidget(parseInt(topicId), widget)
                 .then(actualWidget =>
                     dispatch(createWidget(actualWidget))),
 
         findWidgetsForTopic: (topicId) =>
-            WidgetService.findWidgetsForTopic(topicId)
+            WidgetService.findWidgetsForTopic(parseInt(topicId))
                 .then(actualWidgets =>
-                    dispatch(findWidgetsForTopic(actualWidgets.sort(compare)))),
+                    dispatch(findWidgetsForTopic(actualWidgets))),
 
         updateWidgetUp: (widget) =>
             WidgetService.updateWidgetUp(widget)
                 .then(actualWidgets =>
-                    dispatch(updateWidgetUp(actualWidgets.sort(compare)))),
+                    dispatch(updateWidgetUp(actualWidgets))),
 
         updateWidgetDown: (widget) => {
             WidgetService.updateWidgetDown(widget)
                 .then(actualWidgets =>
-                    dispatch(updateWidgetDown(actualWidgets.sort(compare))))
+                    dispatch(updateWidgetDown(actualWidgets)))
         }
 
     }
