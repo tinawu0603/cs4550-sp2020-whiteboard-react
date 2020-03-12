@@ -3,7 +3,7 @@ import TopicComponent from "./TopicComponent"
 import "../../css/topic-pills.style.client.css"
 import { connect } from "react-redux";
 import TopicService from '../../services/TopicService'
-import { findTopicsForLesson, createTopic, deleteTopic } from '../../actions/topicActions'
+import { findTopicsForLesson, createTopic, deleteTopic, updateTopic } from '../../actions/topicActions'
 
 class TopicPillsComponent extends React.Component {
     state = {
@@ -12,22 +12,11 @@ class TopicPillsComponent extends React.Component {
         courseId: this.props.courseId,
         moduleId: this.props.moduleId,
         lessonId: this.props.lessonId,
-        topicId: this.props.topicId || "",
+        topicId: this.props.topicId ? parseInt(this.props.topicId) : "",
     }
 
     componentDidMount = async () => {
-        const topics = await TopicService.findTopicsForLesson(this.props.lessonId)
-        this.setState({
-            topics: topics.sort(compare)
-        })
-    }
-
-    componentDidUpdate = async () => {
-        const topics = await TopicService.findTopicsForLesson(this.props.lessonId)
-        this.setState({
-            topics: topics.sort(compare)
-        });
-        this.render();
+        await TopicService.findTopicsForLesson(this.props.lessonId);
     }
 
     updateForm = (newState) => {
@@ -39,8 +28,8 @@ class TopicPillsComponent extends React.Component {
             <div className="topic-pills">
                 <ul className="nav navbar-pills navbar-topics">
                     {
-                        this.state.topics &&
-                        this.state.topics.map((topic, index) => {
+                        Array.isArray(this.props.topics) && this.props.topics.length > 0 &&
+                        this.props.topics.map((topic, index) => {
                             return (
                                 <TopicComponent topic={topic} moduleId={this.state.moduleId} courseId={this.state.courseId} lessonId={this.state.lessonId} topicId={this.state.topicId} />
                             )
@@ -68,15 +57,6 @@ class TopicPillsComponent extends React.Component {
     }
 }
 
-const compare = (a, b) => {
-    if (a._createdAt <= b._createdAt) {
-        return -1
-    }
-    else {
-        return 0
-    }
-}
-
 const stateToPropertyMapper = (state) => {
     return {
         topics: state.topics.topics
@@ -88,7 +68,7 @@ const dispatchToPropertyMapper = (dispatch) => {
         findTopicsForLesson: (lessonId) =>
             TopicService.findTopicsForLesson(lessonId)
                 .then(actualTopics =>
-                    dispatch(findTopicsForLesson(actualTopics.sort(compare)))),
+                    dispatch(findTopicsForLesson(actualTopics))),
         deleteTopic: (topicId) =>
             TopicService.deleteTopic(topicId)
                 .then(status =>
@@ -100,9 +80,7 @@ const dispatchToPropertyMapper = (dispatch) => {
         updateTopic: (topicId, topic, lessonId) => {
             TopicService.updateTopic(topicId, topic)
                 .then(status =>
-                    TopicService.findTopicsForLesson(lessonId)
-                        .then(actualTopics =>
-                            dispatch(findTopicsForLesson(actualTopics.sort(compare)))))
+                    dispatch(updateTopic(topicId, topic)))
         }
     }
 }

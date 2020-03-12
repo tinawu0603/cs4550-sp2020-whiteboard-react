@@ -10,7 +10,7 @@ class TopicComponent extends React.Component {
         updatedTopicTitle: "",
         editing: false,
         selectedUrl: `/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${this.props.topic.id}`,
-        unselectedUrl: `/ course - editor / ${this.props.courseId} /module/${this.props.moduleId} /lesson/${this.props.lessonId} `,
+        unselectedUrl: `/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId} `,
         selected: this.props.topicId && this.props.topicId === this.props.topic.id.toString()
     }
 
@@ -45,7 +45,7 @@ class TopicComponent extends React.Component {
                             <img src="/img/edit-white.svg" alt="" className="edit-icon"></img>
                         </button>
                         <button className="btn btn-delete-topic" type="button" onClick={() => {
-                            this.props.deleteTopic(this.props.topic._id);
+                            this.props.deleteTopic(this.props.topic.id);
                         }
                         }>
                             <img src="/img/x.svg" alt="" className="delete-icon"></img>
@@ -72,7 +72,7 @@ class TopicComponent extends React.Component {
                             <img src="/img/edit-white.svg" alt="" className="edit-icon"></img>
                         </button>
                         <button className="btn btn-delete-topic" type="button" onClick={() => {
-                            this.props.deleteTopic(this.props.topic._id);
+                            this.props.deleteTopic(this.props.topic.id);
                         }
                         }>
                             <img src="/img/x.svg" alt="" className="delete-icon"></img>
@@ -91,7 +91,7 @@ class TopicComponent extends React.Component {
                                 });
                             }}></input>
                         <button className="btn" type="button" onClick={() => {
-                            this.props.updateTopic(this.props.topic._id, {
+                            this.props.updateTopic(this.props.topic.id, {
                                 title: this.state.updatedTopicTitle
                             }, this.props.lessonId);
                             this.updateForm({

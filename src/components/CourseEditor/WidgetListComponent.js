@@ -5,7 +5,7 @@ import "../../css/course-editor.style.client.css"
 import "../../css/styles.css"
 import HeadingWidgetComponent from "./Widget/HeadingWidgetComponent";
 import WidgetService from "../../services/WidgetService";
-import { findWidgetsForTopic, createWidget, deleteWidget, updateWidgetUp, updateWidgetDown } from '../../actions/widgetActions'
+import { findWidgetsForTopic, createWidget, deleteWidget, updateWidgetUp, updateWidgetDown, updateWidget } from '../../actions/widgetActions'
 import ParagraphWidgetComponent from "./Widget/ParagraphWidgetComponent";
 import ListWidgetComponent from "./Widget/ListWidgetComponent";
 import ImageWidgetComponent from "./Widget/ImageWidgetComponent";
@@ -22,10 +22,7 @@ class WidgetListComponent extends React.Component {
     }
 
     componentDidMount = async () => {
-        const widgets = await WidgetService.findWidgetsForTopic(this.props.topicId)
-        this.setState({
-            widgets: widgets
-        })
+        await this.props.findWidgetsForTopic(this.props.topicId);
     }
 
     save = (widget) => {
@@ -55,7 +52,7 @@ class WidgetListComponent extends React.Component {
                     </label>
                 </li>
                 {
-                    this.state.widgets && this.state.preview && this.state.widgets.map(widget =>
+                    Array.isArray(this.props.widgets) && this.props.widgets.length > 0 && this.state.preview && this.props.widgets.map(widget =>
                         <li key={widget.id} className="editor widget-item">
                             {
                                 widget.type === "HEADING" &&
@@ -93,7 +90,7 @@ class WidgetListComponent extends React.Component {
                     )
                 }
                 {
-                    this.state.widgets && !this.state.preview && this.state.widgets.map(widget =>
+                    Array.isArray(this.props.widgets) && this.props.widgets.length > 0 && !this.state.preview && this.props.widgets.map(widget =>
                         <li key={widget.id} className="editor widget-item">
                             <div className="row">
                                 <button type="button" className="btn-x btn" onClick={() => this.props.deleteWidget(widget.id)}>
@@ -205,9 +202,7 @@ const dispatchToPropertyMapper = (dispatch) => {
         updateWidget: (widgetId, widget, topicId) => {
             WidgetService.updateWidget(parseInt(widgetId), widget)
                 .then(status =>
-                    WidgetService.findWidgetsForTopic(parseInt(widget.topicId))
-                        .then(actualWidgets =>
-                            dispatch(findWidgetsForTopic(actualWidgets))))
+                    dispatch(updateWidget(parseInt(widgetId), widget)))
         },
 
         deleteWidget: (widgetId) =>
