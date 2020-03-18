@@ -16,7 +16,7 @@ class TopicPillsComponent extends React.Component {
     }
 
     componentDidMount = async () => {
-        await TopicService.findTopicsForLesson(this.props.lessonId);
+        await this.props.findTopicsForLesson(this.props.lessonId);
     }
 
     updateForm = (newState) => {
