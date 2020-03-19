@@ -215,10 +215,13 @@ const dispatchToPropertyMapper = (dispatch) => {
                 .then(actualWidget =>
                     dispatch(createWidget(actualWidget))),
 
-        findWidgetsForTopic: (topicId) =>
-            WidgetService.findWidgetsForTopic(parseInt(topicId))
-                .then(actualWidgets =>
-                    dispatch(findWidgetsForTopic(actualWidgets))),
+        findWidgetsForTopic: (topicId) => {
+            if (topicId) {
+                WidgetService.findWidgetsForTopic(topicId)
+                    .then(actualWidgets =>
+                        dispatch(findWidgetsForTopic(actualWidgets)))
+            }
+        },
 
         updateWidgetUp: (widget) =>
             WidgetService.updateWidgetUp(widget)
